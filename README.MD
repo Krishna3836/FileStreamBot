@@ -109,8 +109,8 @@ and to stop the whole bot,
 Setting up things
 
 If you're on Heroku, just add these in the Environmental Variables
-or if you're Locally hosting, create a file named `.env` in the root directory and add all the variables there.
-An example of `.env` file:
+or if you're Locally hosting, create a file named `config.env` in the root directory and add all the variables there.
+An example of `config.env` file:
 
 ```py
 API_ID=12345
