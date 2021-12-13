@@ -35,7 +35,7 @@ async def follow_user(b,m):
     except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="I am Coded By Adarsh Goel and Sponsored by [Gopal Naik](https://t.me/Movie_leecher)",
+                    text="I am Coded By [Adarsh Goel](https://github.com/code-x-mania)",
                     
                     reply_markup=InlineKeyboardMarkup(
                         [
