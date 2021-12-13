@@ -82,7 +82,7 @@
       },
        "MY_PASS": {
           "description": "Default value is None",
-          "value": "True",
+          "value": "Your Password",
           "required": false
       },
       "BIND_ADRESS": {
