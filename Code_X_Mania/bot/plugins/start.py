@@ -159,14 +159,7 @@ Send me any file and get a direct download link and streamable link.!""",
                     parse_mode="markdown",
                     disable_web_page_preview=True)
                 return
-            async def media(c, m):
-                        if Config.BOT_PASSWORD:
-                                    is_logged = (await get_data(m.from_user.id)).is_logged
-                                    if not is_logged and m.from_user.id not in Config.AUTH_USERS:
-                                                return await m.reply_text(text="You are not loggen in /login password", quote=True)
-        
-    
-                                                return
+            
     
 
     
