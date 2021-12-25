@@ -83,7 +83,7 @@
        "MY_PASS": {
           "description": "Default value is None",
           "value": "Your Password",
-          "required": True
+          "required": true
       },
       "BIND_ADRESS": {
           "description": "Read the readme for more info about this var  Leave Empty  For heroku",
