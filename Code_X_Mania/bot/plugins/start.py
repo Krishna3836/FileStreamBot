@@ -110,7 +110,7 @@ async def start(b, m):
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://user-images.githubusercontent.com/88939380/137127129-a86fc939-2931-4c66-b6f6-b57711a9eab7.png",
-            caption = START_TEXT.format(update.from_user.mention),
+            caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
             reply_markup=buttonz)                                                                               
                                                                                        
