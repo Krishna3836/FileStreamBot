@@ -12,12 +12,7 @@ from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
-
-
-pass_dict = {}
-pass_db = Database(Var.DATABASE_URL, "jv_passwords")
-
-
+#Recoded By @Tellybots
 
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
@@ -34,7 +29,7 @@ async def private_receive_handler(c: Client, m: Message):
             if user.status == "kicked":
                 await c.send_message(
                     chat_id=m.chat.id,
-                    text="Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ.\n\n  **Cᴏɴᴛᴀᴄᴛ Dᴇᴠᴇʟᴏᴘᴇʀ @Tellybots_4u ʜᴇ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                    text="Sorry Sir, You are Banned To Use Me\n\n  **Contact Our Support Group @Tellybots_support Admin Will Help You**",
                     parse_mode="markdown",
                     disable_web_page_preview=True
                 )
@@ -42,11 +37,11 @@ async def private_receive_handler(c: Client, m: Message):
         except UserNotParticipant:
             await c.send_message(
                 chat_id=m.chat.id,
-                text="""<i>𝙹𝙾𝙸𝙽 UPDATES CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴 🔐</i>""",
+                text="""Join My Update Channel 💕 To Use Me 🔐</i>""",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                            InlineKeyboardButton("Join Now 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                         ]
                     ]
                 ),
@@ -57,7 +52,7 @@ async def private_receive_handler(c: Client, m: Message):
             await m.reply_text(e)
             await c.send_message(
                 chat_id=m.chat.id,
-                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ Support Group ** @Tellybots_support",
+                text="**Something Went Wrong. Contact Our Support Group ** @Tellybots_support",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
@@ -95,7 +90,7 @@ async def private_receive_handler(c: Client, m: Message):
  
         msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n📥 Download Link : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
 
-        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
+        await log_msg.reply_text(text=f"**Requested By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
             text=msg_text.format(file_name, file_size, online_link, stream_link),
             parse_mode="HTML", 
@@ -121,7 +116,7 @@ async def channel_receive_handler(bot, broadcast):
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
         online_link = Var.URL + 'download/' + str(log_msg.message_id) 
         await log_msg.reply_text(
-            text=f"**Cʜᴀɴɴᴇʟ Nᴀᴍᴇ:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** {stream_link}",
+            text=f"**Channel Name:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** {stream_link}",
             quote=True,
             parse_mode="Markdown"
         )
@@ -130,8 +125,8 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🎥 STREAM ", url=stream_link),
-                     InlineKeyboardButton('📩 DOWNLOAD', url=online_link)] 
+                    [InlineKeyboardButton("🎥 Watch Online", url=stream_link),
+                     InlineKeyboardButton('📩 Download Link', url=online_link)] 
                 ]
             )
         )
@@ -139,8 +134,8 @@ async def channel_receive_handler(bot, broadcast):
         print(f"Sleeping for {str(w.x)}s")
         await asyncio.sleep(w.x)
         await bot.send_message(chat_id=Var.BIN_CHANNEL,
-                             text=f"Gᴏᴛ FʟᴏᴏᴅWᴀɪᴛ ᴏғ {str(w.x)}s from {broadcast.chat.title}\n\n**Cʜᴀɴɴᴇʟ ID:** `{str(broadcast.chat.id)}`",
+                             text=f"Got FloodWait Of {str(w.x)}s from {broadcast.chat.title}\n\n**Channel Id:** `{str(broadcast.chat.id)}`",
                              disable_web_page_preview=True, parse_mode="Markdown")
     except Exception as e:
         await bot.send_message(chat_id=Var.BIN_CHANNEL, text=f"**#ᴇʀʀᴏʀ_ᴛʀᴀᴄᴇʙᴀᴄᴋ:** `{e}`", disable_web_page_preview=True, parse_mode="Markdown")
-        print(f"Cᴀɴ'ᴛ Eᴅɪᴛ Bʀᴏᴀᴅᴄᴀsᴛ Mᴇssᴀɢᴇ!\nEʀʀᴏʀ:  **Give me edit permission in updates and bin Chanell{e}**")
+        print(f"Cᴀɴ'ᴛ Eᴅɪᴛ Bʀᴏᴀᴅᴄᴀsᴛ Mᴇssᴀɢᴇ!\nEʀʀᴏʀ:  **Give me edit permission in updates and bin Channel{e}**")
