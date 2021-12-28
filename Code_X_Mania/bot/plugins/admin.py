@@ -105,7 +105,7 @@ async def broadcast_handler(m: Message):
                     f"Total done {done}, {success} success and {failed} failed.",
             quote=True
         )
-    await aiofiles.os.remove('broadcast.txt')
+    await os.remove('broadcast.txt')
 
 
 @StreamBot.on_message(filters.command("users") & filters.private & ~filters.edited)
