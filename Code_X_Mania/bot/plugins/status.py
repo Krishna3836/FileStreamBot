@@ -4,7 +4,7 @@ from Code_X_Mania.bot import StreamBot
 from Code_X_Mania import StartTime
 
 
-@StreamBot.on_message(filters.private & filter command("/status) & filters.regex("status📇"))
+@StreamBot.on_message((filters.command("status📇") | filters.regex('status')) & filters.private & ~filters.edited)
 async def stats(bot, update):
   currentTime = readable_time((time.time() - StartTime))
   total, used, free = shutil.disk_usage('.')
