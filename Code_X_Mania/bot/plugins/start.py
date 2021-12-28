@@ -28,24 +28,7 @@ buttonz=ReplyKeyboardMarkup(
             
             
             
-@StreamBot.on_message(filters.regex("maintainers😎"))
-async def follow_user(b,m):
-    try:
-       await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
-    except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="I am Coded By [Adarsh Goel](https://github.com/code-x-mania)",
-                    
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Developer💻", url=f"https://t.me/adarsh_goel")
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown",
-                    disable_web_page_preview=True)
+
             
          
 @StreamBot.on_message(filters.regex("follow❤️"))
@@ -60,7 +43,7 @@ async def follow_user(b,m):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/CODE-X-MANIA")
+                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/TELLYBots")
                             ]
                         ]
                     ),
@@ -83,7 +66,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="__𝓢𝓞𝓡𝓡𝓨, 𝓨𝓞𝓤 𝓐𝓡𝓔 𝓐𝓡𝓔 𝓑𝓐𝓝𝓝𝓔𝓓 𝓕𝓡𝓞𝓜 𝓤𝓢𝓘𝓝𝓖 𝓜𝓔. 𝓒ᴏɴᴛᴀᴄᴛ ᴛʜᴇ 𝓓ᴇᴠᴇʟᴏᴘᴇʀ__\n\n @codexmaniabot **𝙃𝙚 𝙬𝙞𝙡𝙡 𝙝𝙚𝙡𝙥 𝙮𝙤𝙪**",
+                        text="Sorry Sir You Are Banned To Use Me. cᴏɴᴛᴀᴄᴛ ᴛʜᴇ DᴇᴠᴇʟᴏᴘᴇR\n\n @Tellybots_support **He Will help You**",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -196,16 +179,16 @@ Send me any file and get a direct download link and streamable link.!""",
        
 
         msg_text ="""
-<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
+𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> {}
 
-<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
+<b>🗃️ Fɪʟᴇ ꜱɪᴢᴇ :</b> {}
 
-<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
+<b>📩 Dᴏᴡɴʟᴏᴀᴅ :</b> {}
 
-<b> 🖥WATCH  :</b> <i>{}</i>
+<b>🎥 WATCH  :</b> {}
 
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
+<b>♻️ NOTE : Link Will Be Expired After 6 days</b>
 """
 
         await m.reply_text(
