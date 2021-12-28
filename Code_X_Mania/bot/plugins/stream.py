@@ -13,45 +13,15 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 
-MY_PASS = os.environ.get("MY_PASS",None)
+
 pass_dict = {}
 pass_db = Database(Var.DATABASE_URL, "jv_passwords")
 
 
-@StreamBot.on_message((filters.regex("login🔑") | filters.command("login")) & ~filters.edited, group=4)
-async def login_handler(c: Client, m: Message):
-    try:
-        try:
-            jv = await m.reply_text("Now send me password.\n\n If You don't know check the MY_PASS Variable in heroku \n\n(You can use /cancel command to cancel the process)")
-            _text = await c.listen(m.chat.id, filters=filters.text, timeout=90)
-            if _text.text:
-                textp = _text.text
-                if textp=="/cancel":
-                   await jv.edit("Process Cancelled Successfully")
-                   return
-            else:
-                return
-        except TimeoutError:
-            await jv.edit("I can't wait more for password, try again")
-            return
-        if textp == MY_PASS:
-            await pass_db.add_user_pass(m.chat.id, textp)
-            jv_text = "yeah! you entered the password correctly"
-        else:
-            jv_text = "Wrong password, try again"
-        await jv.edit(jv_text)
-    except Exception as e:
-        print(e)
+
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
-    check_pass = await pass_db.get_user_pass(m.chat.id)
-    if check_pass== None:
-        await m.reply_text("Login first using /login cmd \n don\'t know the pass? request it from @adarshgoelz")
-        return
-    if check_pass != MY_PASS:
-        await pass_db.delete_user(m.chat.id)
-        return
     if not await db.is_user_exist(m.from_user.id):
         await db.add_user(m.from_user.id)
         await c.send_message(
@@ -64,7 +34,7 @@ async def private_receive_handler(c: Client, m: Message):
             if user.status == "kicked":
                 await c.send_message(
                     chat_id=m.chat.id,
-                    text="__Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ.__\n\n  **Cᴏɴᴛᴀᴄᴛ Dᴇᴠᴇʟᴏᴘᴇʀ @adarshgoelz ʜᴇ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                    text="Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ.\n\n  **Cᴏɴᴛᴀᴄᴛ Dᴇᴠᴇʟᴏᴘᴇʀ @Tellybots_4u ʜᴇ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
                     parse_mode="markdown",
                     disable_web_page_preview=True
                 )
@@ -87,7 +57,7 @@ async def private_receive_handler(c: Client, m: Message):
             await m.reply_text(e)
             await c.send_message(
                 chat_id=m.chat.id,
-                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ ʙᴏss** @adarshgoelz",
+                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ Support Group ** @Tellybots_support",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
@@ -124,17 +94,17 @@ async def private_receive_handler(c: Client, m: Message):
         
 
         msg_text ="""
-<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>
+𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !
 
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> {}
 
-<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
+<b>🗃️ Fɪʟᴇ ꜱɪᴢᴇ :</b> {}
 
-<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
+<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> {}
 
-<b> 🖥WATCH  :</b> <i>{}</i>
+<b>🎥 WATCH  :</b> {}
 
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>"""
+<b>♻️ Note : LINK Will Be Expires After 6 days</b>"""
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
@@ -153,14 +123,7 @@ async def private_receive_handler(c: Client, m: Message):
 
 @StreamBot.on_message(filters.channel & ~filters.group & (filters.document | filters.video | filters.photo) & ~filters.edited & ~filters.forwarded, group=-1)
 async def channel_receive_handler(bot, broadcast):
-    check_pass = await pass_db.get_user_pass(broadcast.chat.id)
-    if check_pass == None:
-        await broadcast.reply_text("Login first using /login cmd \n don\'t know the pass? request it from @adarshgoelz")
-        return
-    if check_pass != MY_PASS:
-        await broadcast.reply_text("Wrong password, login again")
-        await pass_db.delete_user(broadcast.chat.id)
-        return
+    
     if int(broadcast.chat.id) in Var.BANNED_CHANNELS:
         await bot.leave_chat(broadcast.chat.id)
         return
@@ -178,8 +141,8 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🖥STREAM ", url=stream_link),
-                     InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)] 
+                    [InlineKeyboardButton("🎥 STREAM ", url=stream_link),
+                     InlineKeyboardButton('📩 DOWNLOAD', url=online_link)] 
                 ]
             )
         )
