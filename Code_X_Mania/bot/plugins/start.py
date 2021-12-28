@@ -64,7 +64,7 @@ async def follow_user(b,m):
             
          
 
-@StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
+@StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
     if not await db.is_user_exist(m.from_user.id):
         await db.add_user(m.from_user.id)
