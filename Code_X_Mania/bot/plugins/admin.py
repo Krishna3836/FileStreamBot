@@ -28,15 +28,11 @@ async def sts(c: Client, m: Message):
         
         
 @StreamBot.on_message(filters.command("broadcast") & filters.private & ~filters.edited)
-async def broadcast_(c, m):
-broadcast_ids = {}
-
-
-async def send_msg(user_id, message):
+async def send_msg(c, m):
     try:
-        if Config.BROADCAST_AS_COPY is False:
+        if Var.BROADCAST_AS_COPY is False:
             await message.forward(chat_id=user_id)
-        elif Config.BROADCAST_AS_COPY is True:
+        elif Var.BROADCAST_AS_COPY is True:
             await message.copy(chat_id=user_id)
         return 200, None
     except FloodWait as e:
