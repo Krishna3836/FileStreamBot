@@ -183,7 +183,7 @@ async def start(b, m):
         online_link = Var.URL + 'download/' + str(log_msg.message_id) 
        
 
-        msg_text = "Your Link Generated! \n\n📇 **File Name:** `{}`\n🗄️ **File Size:** `{}`\n\n📥 **Download Link** `{}`\n\n🎥 **Stream** `{}`"
+        msg_text = "Your Link Generated! \n\n📇 File Name : `{}` \n\n🗄️ File Size :`{}` \n\n📥 Download Link `{}` \n\n🎥 Stream `{}` "
 
         await m.reply_text(
             text=msg_text.format(file_name, file_size, online_link, stream_link),
