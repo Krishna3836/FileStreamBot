@@ -13,7 +13,7 @@ from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
 from pyrogram.types import Message
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
-import broadcast_handler
+from Code_X_Mania.bot.plugins.admin import broadcast_handler
 broadcast_ids = {}
 
 
