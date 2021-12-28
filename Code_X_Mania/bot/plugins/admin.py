@@ -16,7 +16,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 broadcast_ids = {}
 
-
+@StreamBot.on_message(filters.command("broadcast") & filters.edited)
 async def send_msg(user_id, message):
     try:
         if Var.BROADCAST_AS_COPY is False:
@@ -113,8 +113,4 @@ async def sts(c: Client, m: Message):
         total_users = await db.total_users_count()
         await m.reply_text(text=f"Total Users in DB: {total_users}", parse_mode="Markdown", quote=True)
         
-@StreamBot.on_message(filters.command("broadcast") & filters.edited)
-async def broadcast_in(_, m: Message):
-    user_id=m.from_user.id
-    if user_id in Var.OWNER_ID:
-    await broadcast_handler(m)
+
