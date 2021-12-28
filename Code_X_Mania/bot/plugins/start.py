@@ -46,7 +46,8 @@ async def follow_user(b,m):
                             ]
                         ]
                     ),
-                    parse_mode="HTML",
+                    parse_mode="html",
+                    reply_markup=buttonz,
                     disable_web_page_preview=True)
 
 @StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
