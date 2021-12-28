@@ -113,7 +113,7 @@ async def sts(c: Client, m: Message):
         total_users = await db.total_users_count()
         await m.reply_text(text=f"Total Users in DB: {total_users}", parse_mode="Markdown", quote=True)
         
-@StreamBot.on_message(filters.command("broadcast") & filters.user(Var.OWNER_ID) & filters.reply & ~filters.edited)
+@StreamBot.on_message(filters.command("broadcast") & filters.user(Var.OWNER_ID) & filters.edited)
 async def broadcast_in(_, m: Message):
     await broadcast_handler(m)
 
