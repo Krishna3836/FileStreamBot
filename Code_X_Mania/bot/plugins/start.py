@@ -24,10 +24,10 @@ buttonz=ReplyKeyboardMarkup(
         )
 
 START_TEXT = """
-<b>Hey </b> <b>{}</b>\n
-<b>I am Telegram File Direct Link Generator as well as File Streamer Bot. </b>\n
-<b>✪ Use Help Command to Know how to Use me.</b>\n
-<b><b>✪ Made With 💕 By </b>@Tellybots_4u</b>"""
+ℍ𝕖𝕪 {}
+𝕀 𝕒𝕞 𝕋𝕖𝕝𝕖𝕘𝕣𝕒𝕞 𝔽𝕚𝕝𝕖 𝔻𝕚𝕣𝕖𝕔𝕥 𝕃𝕚𝕟𝕜 𝔾𝕖𝕟𝕖𝕣𝕒𝕥𝕠𝕣 𝕒𝕤 𝕨𝕖𝕝𝕝 𝕒𝕤 𝔽𝕚𝕝𝕖 𝕊𝕥𝕣𝕖𝕒𝕞𝕖𝕣 𝔹𝕠𝕥.\n
+✪ 𝕌𝕤𝕖 ℍ𝕖𝕝𝕡 ℂ𝕠𝕞𝕞𝕒𝕟𝕕 𝕥𝕠 𝕂𝕟𝕠𝕨 𝕙𝕠𝕨 𝕥𝕠 𝕌𝕤𝕖 𝕞𝕖.\n
+✪ 𝕄𝕒𝕕𝕖 𝕎𝕚𝕥𝕙 💕 𝔹𝕪 @𝕋𝕖𝕝𝕝𝕪𝕓𝕠𝕥𝕤_𝟜𝕦"""
 
             
             
@@ -42,12 +42,12 @@ async def follow_user(b,m):
     except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="<B>HERE'S THE FOLLOW LINK</B>",
+                    text="<b>Here The Follow Links</b>",
                     
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/Tellybots")
+                                InlineKeyboardButton("Follow Me", url=f"https://github.com/Tellybots")
                             ]
                         ]
                     ),
@@ -70,7 +70,7 @@ async def start(b, m):
         await db.add_user(m.from_user.id)
         await b.send_message(
             Var.BIN_CHANNEL,
-            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!__"
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
         )
     usr_cmd = m.text.split("_")[-1]
     if usr_cmd == "start" or "/start":
@@ -80,7 +80,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="__𝓢𝓞𝓡𝓡𝓨, 𝓨𝓞𝓤 𝓐𝓡𝓔 𝓐𝓡𝓔 𝓑𝓐𝓝𝓝𝓔𝓓 𝓕𝓡𝓞𝓜 𝓤𝓢𝓘𝓝𝓖 𝓜𝓔. 𝓒ᴏɴᴛᴀᴄᴛ ᴛʜᴇ 𝓓ᴇᴠᴇʟᴏᴘᴇʀ__\n\n @codexmaniabot **𝙃𝙚 𝙬𝙞𝙡𝙡 𝙝𝙚𝙡𝙥 𝙮𝙤𝙪**",
+                        text="Sorry Sir, You are Banned To Use Me\n\n Contact Our Support Group @Tellybots_support **Admin Will Help You**",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -89,11 +89,11 @@ async def start(b, m):
                  await StreamBot.send_photo(
                     chat_id=m.chat.id,
                     photo="https://telegra.ph/file/6331817952aaadba88819.jpg",
-                    caption="<i>𝙹𝙾𝙸𝙽 CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴🔐</i>",
+                    caption="Join My Updates Channel To Use Me",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                                InlineKeyboardButton("Jᴏin Now 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                             ]
                         ]
                     ),
@@ -103,7 +103,7 @@ async def start(b, m):
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="<i>𝓢𝓸𝓶𝓮𝓽𝓱𝓲𝓷𝓰 𝔀𝓮𝓷𝓽 𝔀𝓻𝓸𝓷𝓰</i> <b> <a href='http://t.me/codexmaniabot'>CLICK HERE FOR SUPPORT </a></b>",
+                    text="Something Went Wrong. Contact Our Support Group @Tellybots_support",
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
@@ -122,7 +122,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @adarsh_status_bot",
+                        text="**Sorry Sir, You are Banned To Use Me. Contact Our Support Group @Tellybots_support",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -131,7 +131,7 @@ async def start(b, m):
                 await StreamBot.send_photo(
                     chat_id=m.chat.id,
                     photo="https://i.ibb.co/ys3Tgpk/mtzijuhd-0.png",
-                    caption="**Pʟᴇᴀsᴇ Jᴏɪɴ  Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ**!\n\n**Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ**!",
+                    caption="**Please Join My Update Channel To Use Me**!\n\n**Due To Overload Only Channel Subscriber Can Use Me**!",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
@@ -149,7 +149,7 @@ async def start(b, m):
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ** [ADARSH GOEL](https://t.me/codexmaniabot)",
+                    text="Something Went Wrong. Contact Our Support Group @Tellybots_support",
                     parse_mode="markdown",
                     disable_web_page_preview=True)
                 return
@@ -188,8 +188,8 @@ async def start(b, m):
         await m.reply_text(
             text=msg_text.format(file_name, file_size, online_link, stream_link),
             parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)]]) #Download Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎥 Watch Online", url=stream_link), #Stream Link
+                                                InlineKeyboardButton('📩 Download Link', url=online_link)]]) #Download Link
         )
 
 
@@ -199,7 +199,7 @@ async def help_handler(bot, message):
         await db.add_user(message.from_user.id)
         await bot.send_message(
             Var.BIN_CHANNEL,
-            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ **\n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{message.from_user.first_name}](tg://user?id={message.from_user.id}) __Started Your Bot !!__"
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ **\n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started Your Bot !!"
         )
     if Var.UPDATES_CHANNEL is not None:
         try:
@@ -207,7 +207,7 @@ async def help_handler(bot, message):
             if user.status == "kicked":
                 await bot.send_message(
                     chat_id=message.chat.id,
-                    text="<i>Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ FROM USING ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ</i>",
+                    text="Sorry Sir You Are Banned To Use Me. Contact The Developer",
                     parse_mode="HTML",
                     disable_web_page_preview=True
                 )
@@ -216,11 +216,11 @@ async def help_handler(bot, message):
             await StreamBot.send_photo(
                 chat_id=message.chat.id,
                 photo="https://i.ibb.co/ys3Tgpk/mtzijuhd-0.png",
-                Caption="**𝙹𝙾𝙸𝙽 𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿 𝚃𝙾 𝚄𝚂𝙴 ᴛʜɪs Bᴏᴛ!**\n\n__Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ!__",
+                Caption="**Join Our Update Channel Or Support Group To Use Me!**\n\nDue To Overload Only Channel Subscriber Can Use Me",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                            InlineKeyboardButton("♻️ Join My Update Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                         ]
                     ]
                 ),
@@ -230,7 +230,7 @@ async def help_handler(bot, message):
         except Exception:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="__Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ__ ADARSH GOEL](https://t.me/adarsh_status_bot).",
+                text="Something Went Wrong. Contact The Developer.",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
