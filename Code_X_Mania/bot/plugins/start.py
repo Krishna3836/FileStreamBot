@@ -23,7 +23,7 @@ buttonz=ReplyKeyboardMarkup(
             resize_keyboard=True
         )
 
-START_TEXT = """Hey {}
+START_TEXT = """Hey {}\n
 I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
 ✪ Use Help Command to Know how to Use me.\n
 ✪ Made With 💕 By @Tellybots_4u"""
