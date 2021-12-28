@@ -40,14 +40,14 @@ async def send_msg(user_id, message):
 async def broadcast_handler(m: Message):
     user_id=m.from_user.id
     if user_id in Var.OWNER_ID:
-    all_users = await db.get_all_users()
-    broadcast_msg = m.reply_to_message
-    while True:
-        broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
-        if not broadcast_ids.get(broadcast_id):
-            break
-    out = await m.reply_text(
-        text=f"Broadcast Started! You will be notified with log file when all the users are notified."
+        all_users = await db.get_all_users()
+        broadcast_msg = m.reply_to_message
+        while True:
+            broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
+            if not broadcast_ids.get(broadcast_id):
+                break
+        out = await m.reply_text(
+            text=f"Broadcast initiated! You will be notified with log file when all the users are notified."
     )
     start_time = time.time()
     total_users = await db.total_users_count()
