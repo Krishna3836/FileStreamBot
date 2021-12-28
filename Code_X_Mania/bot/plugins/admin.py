@@ -13,7 +13,7 @@ from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
 from pyrogram.types import Message
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
-
+import broadcast_handler
 broadcast_ids = {}
 
 
@@ -113,5 +113,7 @@ async def sts(c: Client, m: Message):
         total_users = await db.total_users_count()
         await m.reply_text(text=f"Total Users in DB: {total_users}", parse_mode="Markdown", quote=True)
         
-        
+@StreamBot.on_message(filters.command("broadcast") & filters.user(Config.OWNER_ID) & filters.reply & ~filters.edited)
+async def broadcast_in(_, m: Message):
+    await broadcast_handler(m)
 
