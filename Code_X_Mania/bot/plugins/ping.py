@@ -4,7 +4,7 @@ from pyrogram import filters
 from Code_X_Mania.bot import StreamBot
 import time
 
-@StreamBot.on_message(filters.regex("ping📡"))
+@StreamBot.on_message(filters.regex("ping"))
 async def ping(b, m):
     start_t = time.time()
     jv = await m.reply_text("....")
