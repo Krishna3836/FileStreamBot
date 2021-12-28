@@ -109,11 +109,7 @@ async def start(b, m):
 I am Telegram File to Link Generator Bot with Channel support.
 Send me any file and get a direct download link and streamable link.!""",
             parse_mode="html",
-            reply_markup=buttonz)
-        	await bot.send_message(
-		msg.chat.id,
-		'Use below buttons to interact with me',
-		reply_markup=buttonz)                                                                               
+            reply_markup=buttonz, Buttons)                                                                               
                                                                                        
                                                                             
     else:
