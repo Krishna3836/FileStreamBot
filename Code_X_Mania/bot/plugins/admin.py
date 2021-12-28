@@ -16,7 +16,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 broadcast_ids = {}
 
-@StreamBot.on_message(filters.command("broadcast") & filters.edited)
+
 async def send_msg(user_id, message):
     try:
         if Var.BROADCAST_AS_COPY is False:
@@ -37,7 +37,7 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-
+async def broadcast_handler(m: Message):
     user_id=m.from_user.id
     if user_id in Var.OWNER_ID:
     all_users = await db.get_all_users()
