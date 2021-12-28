@@ -50,97 +50,23 @@ async def follow_user(b,m):
                     disable_web_page_preview=True)
 
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
-async def start(b, m):
-    if not await db.is_user_exist(m.from_user.id):
-        await db.add_user(m.from_user.id)
-        await b.send_message(
-            Var.BIN_CHANNEL,
-            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\n__Mʏ Nᴇᴡ Fʀɪᴇɴᴅ__ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!__"
-        )
-    usr_cmd = m.text.split("_")[-1]
-    if usr_cmd == "start" or "/start":
-        if Var.UPDATES_CHANNEL != "None":
-            try:
-                user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
-                if user.status == "kicked":
-                    await b.send_message(
-                        chat_id=m.chat.id,
-                        text="__𝓢𝓞𝓡𝓡𝓨, 𝓨𝓞𝓤 𝓐𝓡𝓔 𝓐𝓡𝓔 𝓑𝓐𝓝𝓝𝓔𝓓 𝓕𝓡𝓞𝓜 𝓤𝓢𝓘𝓝𝓖 𝓜𝓔. 𝓒ᴏɴᴛᴀᴄᴛ ᴛʜᴇ 𝓓ᴇᴠᴇʟᴏᴘᴇʀ__\n\n @codexmaniabot **𝙃𝙚 𝙬𝙞𝙡𝙡 𝙝𝙚𝙡𝙥 𝙮𝙤𝙪**",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                 await StreamBot.send_photo(
-                    chat_id=m.chat.id,
-                    photo="https://telegra.ph/file/5a8cc5542fa4d09a9eb0f.jpg",
-                    caption="<i>𝙹𝙾𝙸𝙽 CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴🔐</i>",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    ),
-                    parse_mode="HTML"
-                )
-                 return
-            except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="<i>𝓢𝓸𝓶𝓮𝓽𝓱𝓲𝓷𝓰 𝔀𝓮𝓷𝓽 𝔀𝓻𝓸𝓷𝓰</i> <b> <a href='http://t.me/codexmaniabot'>CLICK HERE FOR SUPPORT </a></b>",
-                    parse_mode="HTML",
-                    disable_web_page_preview=True)
-                return
-        await StreamBot.send_photo(
-            chat_id=m.chat.id,
-            photo ="https://telegra.ph/file/5a8cc5542fa4d09a9eb0f.jpg",
-            caption ="""Hey !
-I am Telegram File to Link Generator Bot with Channel support.
-Send me any file and get a direct download link and streamable link.!""",
-            parse_mode="html",
-            reply_markup=buttonz)
-                                                                                       
-                                                                                       
-                                                                            
-    else:
-        if Var.UPDATES_CHANNEL != "None":
-            try:
-                user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
-                if user.status == "kicked":
-                    await b.send_message(
-                        chat_id=m.chat.id,
-                        text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @adarsh_status_bot",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                await StreamBot.send_photo(
-                    chat_id=m.chat.id,
-                    photo="https://i.ibb.co/ys3Tgpk/mtzijuhd-0.png",
-                    caption="**Pʟᴇᴀsᴇ Jᴏɪɴ  Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ ᴛᴏ ᴜsᴇ ᴛʜɪs Bᴏᴛ**!\n\n**Dᴜᴇ ᴛᴏ Oᴠᴇʀʟᴏᴀᴅ, Oɴʟʏ Cʜᴀɴɴᴇʟ Sᴜʙsᴄʀɪʙᴇʀs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ Bᴏᴛ**!",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("🤖 Join Updates Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ],
-                            [
-                                InlineKeyboardButton("🔄 Refresh / Try Again",
-                                                     url=f"https://t.me/{Var.APP_NAME}.herokuapp.com/{usr_cmd}") # Chnage ur app name
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown"
-                )
-                return
-            except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ** [ADARSH GOEL](https://t.me/codexmaniabot)",
-                    parse_mode="markdown",
-                    disable_web_page_preview=True)
-                return
+async def start(bot, msg):
+	user = await bot.get_me()
+	mention = user["mention"]
+	await bot.send_message(
+		msg.chat.id,
+		Data.START.format(msg.from_user.mention, mention),
+		reply_markup=InlineKeyboardMarkup(Data.buttons)
+	)
+	await bot.send_message(
+		msg.chat.id,
+		'Use below buttons to interact with me',
+		reply_markup=buttonz
+			one_time_keyboard=True,
+			resize_keyboard=True
+		)
+	)
+    
             
     
 
