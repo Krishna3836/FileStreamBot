@@ -37,7 +37,9 @@ async def send_msg(user_id, message):
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
 
-async def broadcast_handler(m: Message):
+
+    user_id=m.from_user.id
+    if user_id in Var.OWNER_ID:
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
     while True:
