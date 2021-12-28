@@ -88,7 +88,7 @@ async def start(b, m):
             except UserNotParticipant:
                  await StreamBot.send_photo(
                     chat_id=m.chat.id,
-                    photo="https://i.ibb.co/NKXgXD4/vlmnwosn-0.png",
+                    photo="https://telegra.ph/file/6331817952aaadba88819.jpg",
                     caption="<i>𝙹𝙾𝙸𝙽 CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴🔐</i>",
                     reply_markup=InlineKeyboardMarkup(
                         [
@@ -109,7 +109,7 @@ async def start(b, m):
                 return
         await StreamBot.send_photo(
             chat_id=m.chat.id,
-            photo ="https://user-images.githubusercontent.com/88939380/137127129-a86fc939-2931-4c66-b6f6-b57711a9eab7.png",
+            photo ="https://telegra.ph/file/6331817952aaadba88819.jpg",
             caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
             reply_markup=buttonz)                                                                               
