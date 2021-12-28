@@ -16,8 +16,8 @@ from pyrogram.types import ReplyKeyboardMarkup
 
 buttonz=ReplyKeyboardMarkup(
             [
-                ["start⚡️","help📚"],
-                ["follow❤️","ping📡"]
+                ["start","help"],
+                ["follow","ping"]
                         
             ],
             resize_keyboard=True
@@ -27,28 +27,10 @@ buttonz=ReplyKeyboardMarkup(
             
             
             
-            
-@StreamBot.on_message(filters.regex("maintainers😎"))
-async def follow_user(b,m):
-    try:
-       await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
-    except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="I am Coded By [Adarsh Goel](https://github.com/code-x-mania)",
-                    
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Developer💻", url=f"https://t.me/adarsh_goel")
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown",
-                    disable_web_page_preview=True)
+        
             
          
-@StreamBot.on_message(filters.regex("follow❤️"))
+@StreamBot.on_message(filters.regex("follow"))
 async def follow_user(b,m):
     try:
        await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
@@ -60,14 +42,14 @@ async def follow_user(b,m):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/CODE-X-MANIA")
+                                InlineKeyboardButton("FOLLOW ME", url=f"https://GITHUB.COM/Tellybots")
                             ]
                         ]
                     ),
                     parse_mode="HTML",
                     disable_web_page_preview=True)
 
-@StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
+@StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
     if not await db.is_user_exist(m.from_user.id):
         await db.add_user(m.from_user.id)
@@ -216,7 +198,7 @@ Send me any file and get a direct download link and streamable link.!""",
         )
 
 
-@StreamBot.on_message(filters.regex('help📚') & filters.private & ~filters.edited)
+@StreamBot.on_message(filters.regex('help') & filters.private & ~filters.edited)
 async def help_handler(bot, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id)
