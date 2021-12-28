@@ -24,7 +24,7 @@ buttonz=ReplyKeyboardMarkup(
         )
 
 START_TEXT = """
-<b>Hey </b> {}\n
+<b>Hey </b> <b>{}</b>\n
 <b>I am Telegram File Direct Link Generator as well as File Streamer Bot. </b>\n
 <b>✪ Use Help Command to Know how to Use me.</b>\n
 <b><b>✪ Made With 💕 By </b>@Tellybots_4u</b>"""
@@ -184,16 +184,16 @@ async def start(b, m):
        
 
         msg_text ="""
-<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>
+𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 
+<b>🗃️ Fɪʟᴇ ɴᴀᴍᴇ :</b> {}
 
-<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
+<b>📇 Fɪʟᴇ ꜱɪᴢᴇ :</b> {}
 
-<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
+<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> {}
 
-<b> 🖥WATCH  :</b> <i>{}</i>
+<b>🎥 WATCH  :</b> {}
 
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
+<b>♻️ NOTE :</b> Link Will be Expires in 6 days
 """
 
         await m.reply_text(
