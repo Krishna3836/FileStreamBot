@@ -13,7 +13,7 @@ from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.utils.broadcast import broadcast_handler
 
 
-@Client.on_message(filters.command("status") & filters.user(Var.OWNER_ID) & ~filters.edited)
+@Client.on_message(filters.command("status") & ~filters.edited)
 async def status_handler(_, m: Message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
