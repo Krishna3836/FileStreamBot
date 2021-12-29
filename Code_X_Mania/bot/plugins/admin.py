@@ -7,7 +7,7 @@ from pyrogram.types import (
     Message
 )
 from Code_X_Mania.vars import Var
-
+from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.utils.broadcast import broadcast_handler
