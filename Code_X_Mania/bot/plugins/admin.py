@@ -37,3 +37,6 @@ async def status_handler(_, m: Message):
 
 @StreamBot.on_message(filters.command("broadcast") & filters.private & ~filters.edited)
 async def broadcast_(c, m):
+    user_id=m.from_user.id
+    if user_id in Var.OWNER_ID:
+        all_users = await db.get_all_users()
