@@ -109,3 +109,14 @@ async def cb_data(bot, update):
     else:
         await update.message.delete()
 .....
+
+
+@Client.on_message(filters.command(["help"]) & filters.private)
+async def help(bot, update):
+    await add_user_to_database(bot, update)
+    await update.reply_text(
+        text=Translation.HELP_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=Translation.HELP_BUTTONS
+    )
+.......
