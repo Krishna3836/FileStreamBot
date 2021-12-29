@@ -19,70 +19,40 @@ broadcast_ids = {}
 
 
 
+from userbase import present_in_userbase, add_to_userbase, get_users # userbase.py is Attached below
+import time
 
 @StreamBot.on_message(filters.command("broadcast") & filters.private & ~filters.edited)
 async def broadcast_(c, m):
-    user_id=m.from_user.id
+    user_id=
     if user_id in Var.OWNER_ID:
         all_users = await db.get_all_users()
-    broadcast_msg = m.reply_to_message
-    while True:
-        broadcast_id = ''.join([random.choice(string.ascii_letters) for i in range(3)])
-        if not broadcast_ids.get(broadcast_id):
-            break
-    out = await m.reply_text(
-        text=f"Broadcast initiated! You will be notified with log file when all the users are notified."
-    )
-    start_time = time.time()
-    total_users = await db.total_users_count()
-    done = 0
-    failed = 0
-    success = 0
-    broadcast_ids[broadcast_id] = dict(
-        total=total_users,
-        current=done,
-        failed=failed,
-        success=success
-    )
-    async with aiofiles.open('broadcast.txt', 'w') as broadcast_log_file:
-        async for user in all_users:
-            sts, msg = await send_msg(
-                user_id=int(user['id']),
-                message=broadcast_msg
+       broadcast_msg = message.reply_to_message
+       txt = await message.reply(text = 'Staring....')        
+       user_id = m.from_user.id
+       success = 0
+       deleted = 0
+       blocked = 0     
+       await txt.edit(text = 'Broadcasting message, Please wait', reply_markup = None)   
+       for user_id in user_ids:
+          try:
+            broadcast_msg = await broadcast_msg.copy(
+            chat_id =user_id ,
+            reply_to_message_id = broadcast_msg.message_id
             )
-            if msg is not None:
-                await broadcast_log_file.write(msg)
-            if sts == 200:
-                success += 1
-            else:
-                failed += 1
-            if sts == 400:
-                await db.delete_user(user['id'])
-            done += 1
-            if broadcast_ids.get(broadcast_id) is None:
-                break
-            else:
-                broadcast_ids[broadcast_id].update(
-                    dict(
-                        current=done,
-                        failed=failed,
-                        success=success
-                    )
-                )
-    if broadcast_ids.get(broadcast_id):
-        broadcast_ids.pop(broadcast_id)
-    completed_in = datetime.timedelta(seconds=int(time.time() - start_time))
-    await asyncio.sleep(3)
-    await out.delete()
-    if failed == 0:
-        await m.reply_text(
-            text=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
-            quote=True
-        )
-    else:
-        await m.reply_document(
-            document='broadcast.txt',
-            caption=f"broadcast completed in `{completed_in}`\n\nTotal users {total_users}.\nTotal done {done}, {success} success and {failed} failed.",
-            quote=True
-        )
-    os.remove('broadcast.txt')
+            success += 1
+            time.sleep(3)
+          except FloodWait as e:
+            await asyncio.sleep(e.x)
+            success += 1
+          except UserIsBlocked:
+            blocked += 1
+          except InputUserDeactivated:
+            deleted += 1                       
+       text = f"""<b>Broadcast Completed</b>    
+Total users: {str(len(user_ids))}
+Deleted accounts: {str(deleted)} """
+       await message.reply(text=text)
+       await message.delete()
+
+
