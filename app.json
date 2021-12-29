@@ -49,7 +49,7 @@
           "required": false
       },
       "UPDATES_CHANNEL": {
-          "description": "Put a Public Channel Username  without @, so every user have to Join that channel to use the bot. Must add bot to channel as Admin to work properly.IF DONT WANT KEEP VALUE AS None",
+          "description": "Add Your Channel Id, so that every user have to Join that channel to use the bot. Must add bot to channel as Admin to work properly.",
           "value":"None",
           "required": false
           
