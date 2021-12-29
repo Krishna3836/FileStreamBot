@@ -32,10 +32,9 @@ I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
             
             
         
-            
-         
 @StreamBot.on_message(filters.regex("follow"))
-async def follow_user(b,m):
+async def follow_user(b,m):            
+    await add_user_to_database(b, m)         
     try:
        await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
     except Exception:
@@ -59,12 +58,11 @@ async def follow_user(b,m):
 
     
 
-                            
+      
             
-         
-
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
+    await add_user_to_database(b, m)
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/6331817952aaadba88819.jpg",
