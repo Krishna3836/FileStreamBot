@@ -1,5 +1,5 @@
 # (c) @AbirHasan2005
-
+from Code_X_Mania.vars import Var
 import asyncio
 import traceback
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
