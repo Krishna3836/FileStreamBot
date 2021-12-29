@@ -8,7 +8,7 @@ from pyrogram.types import (
 )
 from Code_X_Mania.vars import Var
 
-from Database.database import db
+from Code_X_Mania.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.utils.broadcast import broadcast_handler
 
