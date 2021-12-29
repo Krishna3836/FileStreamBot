@@ -38,7 +38,7 @@ START_BUTTONS = InlineKeyboardMarkup(
             
         
 @StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
-        async def start(b, m):
+async def start(b, m):
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://user-images.githubusercontent.com/88939380/137127129-a86fc939-2931-4c66-b6f6-b57711a9eab7.png",
@@ -47,18 +47,4 @@ I am Telegram File to Link Generator Bot with Channel support.
 Send me any file and get a direct download link and streamable link.!""",
             parse_mode="html",
             reply_markup=START_BUTTONS)
-	await bot.send_message(
-		msg.chat.id,
-		'Use below buttons or Commands To Use Me',
-		reply_markup=buttonz
-			one_time_keyboard=True,
-			resize_keyboard=True
-	)
-            
-    
-
-    
-
-      
-            
 
