@@ -38,10 +38,6 @@ START_BUTTONS = InlineKeyboardMarkup(
             
         
 
-
-
-
-# Start Message
 @StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
 async def start(b, m):
         await StreamBot.send_photo(
