@@ -17,8 +17,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
-    if not await db.is_user_exist(m.from_user.id):
-        await db.add_user(m.from_user.id)
+    
         await c.send_message(
             Var.BIN_CHANNEL,
             f"Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ : \n\n Nᴀᴍᴇ : [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
