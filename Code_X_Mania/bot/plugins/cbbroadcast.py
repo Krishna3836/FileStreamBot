@@ -9,7 +9,7 @@ from pyrogram.types import (
 )
 from Code_X_Mania.vars import Var
 from pyrogram import Client
-
+from Code_X_Mania.utils.broadcast import broadcast_handler
 
 
 @Client.on_message(filters.command("broadcast") & filters.user(Var.OWNER_ID) & filters.reply & ~filters.edited)
