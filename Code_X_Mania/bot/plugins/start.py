@@ -28,6 +28,8 @@ I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
 ✪ Use Help Command to Know how to Use me.\n
 ✪ Made With 💕 By @Tellybots_4u"""
 
+TEXT = """Use Below Button Or Command to use Me"""
+
             
 START_BUTTONS = InlineKeyboardMarkup(
         [[
@@ -37,7 +39,9 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]            
 )            
         
-
+START_TEXT = """Hey {}\n
+I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
+✪ Use 
 @StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
 async def start(b, m):
         await StreamBot.send_photo(
@@ -49,7 +53,7 @@ Send me any file and get a direct download link and streamable link.!""",
             parse_mode="html",
             reply_markup=START_BUTTONS)
         await m.reply_text(
-            text=Use Below Button Or Use Command To Use Me,
+            text=TEXT,
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=buttonz
