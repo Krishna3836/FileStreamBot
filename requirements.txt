@@ -4,8 +4,12 @@ aiohttp
 python-dotenv
 motor
 aiofiles
-dnspython
 apscheduler
 requests
 psutil
 pyromod
+hachoir
+dnspython
+Pillow
+mutagen
+ffmpeg-python
