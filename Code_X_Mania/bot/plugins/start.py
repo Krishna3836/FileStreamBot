@@ -65,93 +65,13 @@ async def follow_user(b,m):
 
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
-        await b.send_message(
-            Var.BIN_CHANNEL,
-            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
-        )
-    usr_cmd = m.text.split("_")[-1]
-    if usr_cmd == "start" or "/start":
-        if Var.UPDATES_CHANNEL != "None":
-            try:
-                user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
-                if user.status == "kicked":
-                    await b.send_message(
-                        chat_id=m.chat.id,
-                        text="Sorry Sir, You are Banned To Use Me\n\n Contact Our Support Group @Tellybots_support **Admin Will Help You**",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                 await StreamBot.send_photo(
-                    chat_id=m.chat.id,
-                    photo="https://telegra.ph/file/6331817952aaadba88819.jpg",
-                    caption="Join My Updates Channel To Use Me",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Jᴏin Now 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    ),
-                    parse_mode="HTML"
-                )
-                 return
-            except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="Something Went Wrong. Contact Our Support Group @Tellybots_support",
-                    parse_mode="HTML",
-                    disable_web_page_preview=True)
-                return
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/6331817952aaadba88819.jpg",
             caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
-            reply_markup=buttonz)                                                                               
-                                                                                       
-                                                                            
-    else:
-        if Var.UPDATES_CHANNEL != "None":
-            try:
-                user = await b.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
-                if user.status == "kicked":
-                    await b.send_message(
-                        chat_id=m.chat.id,
-                        text="**Sorry Sir, You are Banned To Use Me. Contact Our Support Group @Tellybots_support",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                await StreamBot.send_photo(
-                    chat_id=m.chat.id,
-                    photo="https://i.ibb.co/ys3Tgpk/mtzijuhd-0.png",
-                    caption="**Please Join My Update Channel To Use Me**!\n\n**Due To Overload Only Channel Subscriber Can Use Me**!",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("🤖 Join Updates Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ],
-                            [
-                                InlineKeyboardButton("🔄 Refresh / Try Again",
-                                                     url=f"https://t.me/{Var.APP_NAME}.herokuapp.com/{usr_cmd}") # Chnage ur app name
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown"
-                )
+            reply_markup=buttonz)                                                                                                                                                                                                                                               
                 return
-            except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="Something Went Wrong. Contact Our Support Group @Tellybots_support",
-                    parse_mode="markdown",
-                    disable_web_page_preview=True)
-                return
-
-
         get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
 
         file_size = None
