@@ -78,8 +78,8 @@ async def start(b, m):
       fsub = await handle_force_subscribe(b, m)
       if fsub == 400:
         return
-        await add_user_to_database(b, m)    
-        await StreamBot.send_photo(
+    await add_user_to_database(bot, update)
+    await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/0f0d8a7370ff48b48d664.jpg",
             caption = START_TEXT.format(m.from_user.mention),
@@ -90,7 +90,7 @@ async def start(b, m):
             parse_mode="HTML",
             disable_web_page_preview=True,
             reply_markup=buttonz
-              )
+    )
 @StreamBot.on_callback_query()
 async def cb_data(bot, update):
     if update.data == "home":
