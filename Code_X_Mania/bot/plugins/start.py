@@ -47,7 +47,7 @@ ABOUT_TEXT = """
 TEXT = """Use Below Button Or Command to Use Me"""
 
              
-    START_BUTTONS = InlineKeyboardMarkup(
+START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/tellybots_4u'),
         InlineKeyboardButton('💬 Support Group', url='https://telegram.me/tellybots_support')
@@ -55,21 +55,21 @@ TEXT = """Use Below Button Or Command to Use Me"""
         InlineKeyboardButton('❔ Help', callback_data='help'),
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
-    )
-    HELP_BUTTONS = InlineKeyboardMarkup(
+)
+HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏡 Home', callback_data='home'),
         InlineKeyboardButton('👲 About', callback_data='about'),
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
-    )
-    ABOUT_BUTTONS = InlineKeyboardMarkup(
+)
+ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏡 Home', callback_data='home'),
         InlineKeyboardButton('❔ Help', callback_data='help'),
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
-    )        
+)        
  
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
