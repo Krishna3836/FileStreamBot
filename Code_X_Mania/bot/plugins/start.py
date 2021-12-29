@@ -39,9 +39,7 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]            
 )            
         
-START_TEXT = """Hey {}\n
-I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
-✪ Use 
+ 
 @StreamBot.on_message((filters.command("start") | filters.regex('start⚡️')) & filters.private & ~filters.edited)
 async def start(b, m):
         await StreamBot.send_photo(
