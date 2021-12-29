@@ -6,7 +6,7 @@ from pyrogram import filters
 from pyrogram.types import (
     Message
 )
-from config import Config
+from Code_X_Mania.vars import Var
 from pyrogram import Client
 from Database.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
