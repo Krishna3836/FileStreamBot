@@ -9,7 +9,7 @@ import aiofiles
 import traceback
 import aiofiles.os
 from Code_X_Mania.vars import Var
-from Database.database import db
+from Code_X_Mania.database import db
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
@@ -18,9 +18,9 @@ broadcast_ids = {}
 
 async def send_msg(user_id, message):
     try:
-        if Config.BROADCAST_AS_COPY is False:
+        if Var.BROADCAST_AS_COPY is False:
             await message.forward(chat_id=user_id)
-        elif Config.BROADCAST_AS_COPY is True:
+        elif Var.BROADCAST_AS_COPY is True:
             await message.copy(chat_id=user_id)
         return 200, None
     except FloodWait as e:
