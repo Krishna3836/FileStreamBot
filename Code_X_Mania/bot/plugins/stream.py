@@ -18,7 +18,7 @@ from Code_X_Mania.add import add_user_to_database
 async def private_receive_handler(c: Client, m: Message):
     await add_user_to_database(c, m)
     if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
+      fsub = await handle_force_subscribe(c, m)
       if fsub == 400:
         return
     try:        
