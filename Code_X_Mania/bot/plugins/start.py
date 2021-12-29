@@ -41,7 +41,23 @@ START_BUTTONS = InlineKeyboardMarkup(
 
 
 
-
+# Start Message
+@Client.on_message(filters.private & filters.incoming & filters.command("start"))
+async def start(bot, msg):
+	user = await bot.get_me()
+	mention = user["mention"]
+	await bot.send_message(
+		msg.chat.id,
+		START_TEXT.format(msg.from_user.mention, mention),
+		reply_markup=InlineKeyboardMarkup(START_BUTTONS)
+	)
+	await bot.send_message(
+		msg.chat.id,
+		'Use below buttons or Commands To Use Me',
+		reply_markup=buttonz
+			one_time_keyboard=True,
+			resize_keyboard=True
+	)
             
     
 
