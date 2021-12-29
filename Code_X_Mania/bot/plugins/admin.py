@@ -3,9 +3,7 @@
 import shutil
 import psutil
 from pyrogram import filters
-from pyrogram.types import (
-    Message
-)
+from pyrogram.types import Message
 from Code_X_Mania.vars import Var
 from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.database import db
@@ -20,7 +18,7 @@ import aiofiles
 import traceback
 import aiofiles.os
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
-
+broadcast_ids = {}
 @StreamBot.on_message(filters.command("status") & ~filters.edited)
 async def status_handler(_, m: Message):
     total, used, free = shutil.disk_usage(".")
