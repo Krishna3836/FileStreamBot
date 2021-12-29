@@ -2,7 +2,7 @@
 
 import datetime
 import motor.motor_asyncio
-from 
+from Code_X_Mania.vars import Var
 
 
 class Database:
