@@ -7,7 +7,7 @@ from Code_X_Mania.bot import StreamBot
 from pyrogram.types import Message
 
 
-async def add_user_to_database(bot: Client, cmd: Message):
+async def add_user_to_database(bot: StreamBot, cmd: Message):
     if not await db.is_user_exist(cmd.from_user.id):
         await db.add_user(cmd.from_user.id)
         if Var.Bin_Channel is not None:
