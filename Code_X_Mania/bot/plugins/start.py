@@ -70,10 +70,15 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
 )        
- 
+
+    
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
-    await add_user_to_database(b, m)
+    if Config.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, message)
+      if fsub == 400:
+        return
+    await add_user_to_database(b, m)    
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/0f0d8a7370ff48b48d664.jpg",
@@ -109,20 +114,25 @@ async def cb_data(bot, update):
     else:
         await update.message.delete()
 
-
-
 @Client.on_message(filters.command(["help"]) & filters.private)
 async def help(bot, update):
     await add_user_to_database(bot, update)
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, message)
+      if fsub == 400:
+        return
     await update.reply_text(
         text=HELP_TEXT,
         disable_web_page_preview=True,
         reply_markup=HELP_BUTTONS
     )
-
 @Client.on_message(filters.command(["about"]) & filters.private)
 async def about(bot, update):
     await add_user_to_database(bot, update)
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, message)
+      if fsub == 400:
+        return
     await update.reply_text(
         text=ABOUT_TEXT,
         disable_web_page_preview=True,
