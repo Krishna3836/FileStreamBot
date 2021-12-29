@@ -31,3 +31,4 @@ class Var(object):
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', None))
     BANNED_CHANNELS = list(set(int(x) for x in str(getenv("BANNED_CHANNELS", "-1001362659779")).split()))
     URL = "http://{}/".format(FQDN)
+    BROADCAST_AS_COPY = str(os.environ.get("BROADCAST_AS_COPY", "False"))
