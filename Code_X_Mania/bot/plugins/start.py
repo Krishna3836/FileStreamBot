@@ -53,6 +53,8 @@ async def follow_user(b,m):
                     disable_web_page_preview=True)
 
 
+
+
             
     
 
@@ -67,7 +69,14 @@ async def start(b, m):
             photo ="https://telegra.ph/file/6331817952aaadba88819.jpg",
             caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
-            reply_markup=buttonz)                                                                                                                                                                                                                                               
+            reply_markup=START_BUTTONS)                                                                                                                                                                                                                                               
 
-
-       
+        )
+       	await bot.send_message(
+		msg.chat.id,
+		'Use below buttons or Commands To Use Me',
+		reply_markup=buttonz
+			one_time_keyboard=True,
+			resize_keyboard=True
+		)
+	)
