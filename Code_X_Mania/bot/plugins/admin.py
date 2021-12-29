@@ -20,13 +20,13 @@ broadcast_ids = {}
 
 
 
-
 @StreamBot.on_message(filters.command("broadcast") & filters.private & ~filters.edited)
 async def broadcast_(c, m):
     if user_id in Var.OWNER_ID:
+       user_id = await db.get_all_users()
        broadcast_msg = message.reply_to_message
        txt = await message.reply(text = 'Staring....')        
-       user_ids = await db.get_all_users()
+       
        success = 0
        deleted = 0
        blocked = 0     
