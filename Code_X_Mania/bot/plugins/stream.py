@@ -17,7 +17,10 @@ from Code_X_Mania.add import add_user_to_database
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
     await add_user_to_database(c, m)
-
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, message)
+      if fsub == 400:
+        return
     try:        
         file_size = None
         if m.video:
