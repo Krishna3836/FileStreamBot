@@ -7,7 +7,7 @@ from pyrogram import filters
 from pyrogram.types import (
     Message
 )
-from Code_X_Mania.Var import Var
+from Code_X_Mania.vars import Var
 from pyrogram import Client
 
 
