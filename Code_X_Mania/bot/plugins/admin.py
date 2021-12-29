@@ -8,13 +8,19 @@ from Code_X_Mania.vars import Var
 from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
-from Code_X_Mania.utils.broadcast import send_msg
-
-import time
 
 
+from Code_X_Mania.utils.broadcast import broadcast_handler
 
-from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
+
+
+
+
+@StreamBot.on_message(filters.command("broadcast") & filters.user(Var.OWNER_ID) & filters.reply & ~filters.edited)
+async def broadcast_in(_, m: Message):
+    await broadcast_handler(m)
+
+
 
 @StreamBot.on_message(filters.command("status") & ~filters.edited)
 async def status_handler(_, m: Message):
