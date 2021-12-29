@@ -75,7 +75,7 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
     if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
+      fsub = await handle_force_subscribe(b, m)
       if fsub == 400:
         return
         await add_user_to_database(b, m)    
@@ -118,7 +118,7 @@ async def cb_data(bot, update):
 async def help(bot, update):
     await add_user_to_database(bot, update)
     if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
+      fsub = await handle_force_subscribe(bot, update)
       if fsub == 400:
         return
     await update.reply_text(
@@ -130,7 +130,7 @@ async def help(bot, update):
 async def about(bot, update):
     await add_user_to_database(bot, update)
     if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, message)
+      fsub = await handle_force_subscribe(bot, update)
       if fsub == 400:
         return
     await update.reply_text(
