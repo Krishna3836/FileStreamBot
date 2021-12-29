@@ -4,7 +4,7 @@ import os
 import asyncio
 from asyncio import TimeoutError
 from Code_X_Mania.bot import StreamBot
-from Code_X_Mania.utils.database import Database
+
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
@@ -17,12 +17,12 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):   
-        await c.send_message(
+        await b.send_message(
             Var.BIN_CHANNEL,
-            f"Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ : \n\n Nᴀᴍᴇ : [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
+            f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
         )
-    if Var.UPDATES_CHANNEL != "None":
-        try:
+        if Var.UPDATES_CHANNEL != "None":
+            try:
             user = await c.get_chat_member(Var.UPDATES_CHANNEL, m.chat.id)
             if user.status == "kicked":
                 await c.send_message(
