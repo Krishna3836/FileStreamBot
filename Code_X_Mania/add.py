@@ -1,4 +1,4 @@
-# (c) @AbirHasan2005
+# (c) @AbirHasan2005 | Code_X_Mania | @Tellybots
 
 
 from Code_X_Mania.vars import Var
