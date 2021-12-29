@@ -17,8 +17,8 @@ from database.add import add_user_to_database
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
-    try:
-        
+    await add_user_to_database(c, m)
+    try:        
         file_size = None
         if m.video:
             file_size = f"{humanbytes(m.video.file_size)}"
@@ -67,7 +67,7 @@ async def private_receive_handler(c: Client, m: Message):
 
 
 @StreamBot.on_message(filters.channel & ~filters.group & (filters.document | filters.video | filters.photo) & ~filters.edited & ~filters.forwarded, group=-1)
-async def channel_receive_handler(bot, broadcast):    
+async def channel_receive_handler(bot, broadcast):  
     if int(broadcast.chat.id) in Var.BANNED_CHANNELS:
         await bot.leave_chat(broadcast.chat.id)
         return
