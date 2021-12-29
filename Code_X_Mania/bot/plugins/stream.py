@@ -10,7 +10,7 @@ from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
+from database.add import add_user_to_database
 
 #Recoded By @Tellybots
 
