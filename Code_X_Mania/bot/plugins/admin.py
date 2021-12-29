@@ -37,4 +37,6 @@ async def status_handler(_, m: Message):
 
 @Client.on_message(filters.command("broadcast") & filters.user(Var.OWNER_ID) & filters.reply & ~filters.edited)
 async def broadcast_in(_, m: Message):
-    await broadcast_handler(m)
+    user_id=m.from_user.id
+    if user_id in Var.OWNER_ID:
+        all_users = await db.get_all_users()
