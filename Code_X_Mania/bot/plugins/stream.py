@@ -4,7 +4,7 @@ import os
 import asyncio
 from asyncio import TimeoutError
 from Code_X_Mania.bot import StreamBot
-
+from Code_X_Mania.forcesub import handle_force_subscribe
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.vars import Var
 from pyrogram import filters, Client
