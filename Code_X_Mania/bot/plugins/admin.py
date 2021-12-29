@@ -6,7 +6,7 @@ import random
 import asyncio
 import aiofiles
 import datetime
-
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 from Code_X_Mania.utils.database import Database
 from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.vars import Var
