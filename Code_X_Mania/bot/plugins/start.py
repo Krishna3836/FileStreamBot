@@ -9,7 +9,7 @@ from Code_X_Mania.add import add_user_to_database
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
-
+from Code_X_Mania.forcesub import handle_force_subscribe
 
 from pyrogram.types import ReplyKeyboardMarkup
 
@@ -24,7 +24,7 @@ buttonz=ReplyKeyboardMarkup(
         )
 
 START_TEXT = """
-<b>Hey </b> {}\n
+<b>Hey </b> <b>{}</b>\n
 <b>I am Telegram File Direct Link Generator as well as File Streamer Bot. </b>\n
 <b>✪ Use Help Command to Know how to Use me.</b>\n
 <b><b>✪ Made With 💕 By </b>@Tellybots_4u</b>"""
@@ -114,7 +114,7 @@ async def cb_data(bot, update):
     else:
         await update.message.delete()
 
-@Client.on_message(filters.command(["help"]) & filters.private)
+@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
 async def help(bot, update):
     await add_user_to_database(bot, update)
     if Var.UPDATES_CHANNEL:
@@ -126,7 +126,7 @@ async def help(bot, update):
         disable_web_page_preview=True,
         reply_markup=HELP_BUTTONS
     )
-@Client.on_message(filters.command(["about"]) & filters.private)
+@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
 async def about(bot, update):
     await add_user_to_database(bot, update)
     if Var.UPDATES_CHANNEL:
