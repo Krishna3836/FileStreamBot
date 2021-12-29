@@ -78,7 +78,7 @@ async def start(b, m):
       fsub = await handle_force_subscribe(bot, message)
       if fsub == 400:
         return
-    await add_user_to_database(b, m)    
+        await add_user_to_database(b, m)    
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/0f0d8a7370ff48b48d664.jpg",
