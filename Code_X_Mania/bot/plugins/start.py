@@ -74,7 +74,7 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
     
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
-    if Config.UPDATES_CHANNEL:
+    if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, message)
       if fsub == 400:
         return
