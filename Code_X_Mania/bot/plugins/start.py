@@ -37,25 +37,7 @@ START_BUTTONS = InlineKeyboardMarkup(
         ]]            
             
         
-@StreamBot.on_message(filters.regex("follow"))
-async def follow_user(b,m):            
-        await add_user_to_database(b, m)         
-    try:
-       await b.send_message(chat_id=m.chat.id,text="HELLO",quote=True)
-    except Exception:
-                await b.send_message(
-                    chat_id=m.chat.id,
-                    text="<b>Here The Follow Links</b>",
-                    
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Follow Me", url=f"https://github.com/Tellybots")
-                            ]
-                        ]
-                    ),
-                    parse_mode="HTML",
-                    disable_web_page_preview=True)
+
 
 
 
