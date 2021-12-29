@@ -51,5 +51,4 @@ Send me any file and get a direct download link and streamable link.!""",
 	await bot.send_message(
 		msg.chat.id,
 		'Use below buttons to interact with me',
-		reply_markup=buttonz
-	)
+		reply_markup=buttonz)
