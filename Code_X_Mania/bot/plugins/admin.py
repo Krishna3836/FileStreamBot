@@ -11,7 +11,15 @@ from Code_X_Mania.bot import StreamBot
 from Code_X_Mania.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.utils.broadcast import send_msg
-
+import time
+import string
+import random
+import asyncio
+import datetime
+import aiofiles
+import traceback
+import aiofiles.os
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 
 @StreamBot.on_message(filters.command("status") & ~filters.edited)
 async def status_handler(_, m: Message):
