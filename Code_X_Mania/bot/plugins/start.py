@@ -73,7 +73,7 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
  
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
-...
+    await add_user_to_database(b, m)
         await StreamBot.send_photo(
             chat_id=m.chat.id,
             photo ="https://telegra.ph/file/0f0d8a7370ff48b48d664.jpg",
@@ -108,18 +108,4 @@ async def cb_data(bot, update):
         )
     else:
         await update.message.delete()
-@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
-async def help(bot, update):
-    await update.reply_text(
-        text=HELP_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=HELP_BUTTONS
-    )
-
-@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
-async def about(bot, update):
-    await update.reply_text(
-        text=ABOUT_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS
-    )
+.....
