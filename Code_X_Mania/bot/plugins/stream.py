@@ -16,8 +16,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
-async def private_receive_handler(c: Client, m: Message):   
-        await b.send_message(
+async def private_receive_handler(c: Client, m: Message):
     try:
         
         file_size = None
