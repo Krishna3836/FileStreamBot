@@ -5,11 +5,11 @@ import logging
 logger = logging.getLogger(__name__)
 
 from Code_X_Mania.utils.human_readable import humanbytes
-from Code_X_Mania.utils.database import Database
+
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
-db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
+
 
 from pyrogram.types import ReplyKeyboardMarkup
 
@@ -65,8 +65,7 @@ async def follow_user(b,m):
 
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
-    if not await db.is_user_exist(m.from_user.id):
-        await db.add_user(m.from_user.id)
+
         await b.send_message(
             Var.BIN_CHANNEL,
             f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ:** \n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!"
@@ -194,8 +193,7 @@ async def start(b, m):
 
 @StreamBot.on_message(filters.regex('help') & filters.private & ~filters.edited)
 async def help_handler(bot, message):
-    if not await db.is_user_exist(message.from_user.id):
-        await db.add_user(message.from_user.id)
+
         await bot.send_message(
             Var.BIN_CHANNEL,
             f"**Nᴇᴡ Usᴇʀ Jᴏɪɴᴇᴅ **\n\nMʏ Nᴇᴡ Fʀɪᴇɴᴅ [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started Your Bot !!"
