@@ -35,10 +35,6 @@ async def send_msg(user_id, message):
     except Exception as e:
         return 500, f"{user_id} : {traceback.format_exc()}\n"
 
-
-
-
-
 async def broadcast_handler(m: Message):
     all_users = await db.get_all_users()
     broadcast_msg = m.reply_to_message
