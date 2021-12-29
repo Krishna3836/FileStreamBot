@@ -48,7 +48,9 @@ I am Telegram File to Link Generator Bot with Channel support.
 Send me any file and get a direct download link and streamable link.!""",
             parse_mode="html",
             reply_markup=START_BUTTONS)
-	await bot.send_message(
-		msg.chat.id,
-		'Use below buttons to interact with me',
-		reply_markup=buttonz)
+        await m.reply_text(
+            text=Use Below Button Or Use Command To Use Me,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=buttonz
+              )
