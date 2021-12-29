@@ -7,13 +7,13 @@ from pyrogram.types import (
     Message
 )
 from Code_X_Mania.vars import Var
-from pyrogram import Client
+
 from Database.database import db
 from Code_X_Mania.utils.human_readable import humanbytes
 from Code_X_Mania.utils.broadcast import broadcast_handler
 
 
-@Client.on_message(filters.command("status") & ~filters.edited)
+@StreamBot.on_message(filters.command("status") & ~filters.edited)
 async def status_handler(_, m: Message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
@@ -35,7 +35,7 @@ async def status_handler(_, m: Message):
     )
 
 
-@Client.on_message(filters.command("broadcast") & filters.reply & ~filters.edited)
+@StreamBot.on_message(filters.command("broadcast") & filters.reply & ~filters.edited)
 async def broadcast_in(_, m: Message):
     user_id=m.from_user.id
     if user_id in Var.OWNER_ID:
