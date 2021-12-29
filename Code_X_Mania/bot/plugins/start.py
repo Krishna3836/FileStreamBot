@@ -28,8 +28,13 @@ I am Telegram File Direct Link Generator as well as File Streamer Bot.\n
 ✪ Use Help Command to Know how to Use me.\n
 ✪ Made With 💕 By @Tellybots_4u"""
 
-            
-            
+)            
+START_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏡 Help', callback_data='help'),
+        InlineKeyboardButton('👲 About', callback_data='about'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]            
             
         
 @StreamBot.on_message(filters.regex("follow"))
