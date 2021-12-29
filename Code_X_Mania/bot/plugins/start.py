@@ -44,17 +44,32 @@ ABOUT_TEXT = """
 <b>👲 Developer : <a href='https://telegram.me/tellybots_4u'>TellyBots_4u</a></b>\n
 <b>📦 Last Updated : <a href='https://telegram.me/tellybots_4u'>[ 15-Oct-21 ] 10:00 PM</a></b>"""
 
-TEXT = """Use Below Button Or Command to use Me"""
+TEXT = """Use Below Button Or Command to Use Me"""
 
-            
-START_BUTTONS = InlineKeyboardMarkup(
+             
+    START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🏡 Help', callback_data='help'),
+        InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/tellybots_4u'),
+        InlineKeyboardButton('💬 Support Group', url='https://telegram.me/tellybots_support')
+        ],[
+        InlineKeyboardButton('❔ Help', callback_data='help'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
+    )
+    HELP_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏡 Home', callback_data='home'),
         InlineKeyboardButton('👲 About', callback_data='about'),
         InlineKeyboardButton('⛔ Close', callback_data='close')
-        ]]            
-)            
-        
+        ]]
+    )
+    ABOUT_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏡 Home', callback_data='home'),
+        InlineKeyboardButton('❔ Help', callback_data='help'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
+    )        
  
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
