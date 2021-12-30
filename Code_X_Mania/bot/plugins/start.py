@@ -138,3 +138,28 @@ async def about(bot, update):
         disable_web_page_preview=True,
         reply_markup=ABOUT_BUTTONS
     )
+################## login command ##################
+
+@Streambot.on_message(filters.command('login') & filters.incoming & filters.private)
+async def password(c, m):
+    if Config.BOT_PASSWORD:
+        if m.from_user.id in Var.AUTH_USERS:
+            return await m.reply_text(f"__Hey you are auth user of this bot so you don't want to login {DETECTIVE_LIGHT_SKIN_TONE}.__")
+
+        is_logged = (await get_data(m.from_user.id)).is_logged
+        if is_logged:
+            return await m.reply_text(f"__You are already loggedin {VICTORY_HAND}.__", quote=True)
+
+        if len(m.command) == 1:
+            await m.reply_text('Send me the bot password in the format `/login password`')
+        else:
+            cmd, pwd = m.text.split(' ', 1)
+            if pwd == Config.BOT_PASSWORD:
+                await update_login(m.from_user.id, True)
+                await m.reply_text(text=LOCKED_WITH_KEY, quote=True)
+                await m.reply_text(f'Logged Sucessfully to the bot.\nEnjoy the bot now {FACE_SAVORING_FOOD}.', quote=True)
+            else:
+                await m.reply_sticker(sticker="CAACAgQAAxkBAAIlHWC8WTwz55v_w0laDRuSrwL2oWRTAALtDAACYLUpUtRT8sziJp59HwQ", quote=True)
+                return await m.reply_text(f'Incorrect password', quote=True)
+    else:
+        await m.reply_text(f'**This bot was publicly available to all {SMILING_FACE_WITH_HEARTS}.**\nIf you are the owner of the bot to make bot private add bot password in Config Vars {LOCKED_WITH_KEY}.', quote=True)
