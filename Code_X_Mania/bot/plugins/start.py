@@ -79,7 +79,7 @@ async def start(b, m):
             return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
 
     if Var.BOT_PASSWORD:
-        is_logged = (await b(m.from_user.id)).is_logged
+        is_logged = (await m.from_user.id).is_logged
         if not is_logged and m.from_user.id not in Var.AUTH_USERS:
             return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)    
 
@@ -133,7 +133,7 @@ async def password(c, m):
         if m.from_user.id in Var.AUTH_USERS:
             return await m.reply_text(f"__Hey you are auth user of this bot so you don't want to login {DETECTIVE_LIGHT_SKIN_TONE}.__")
 
-        is_logged = (await get_data(m.from_user.id)).is_logged
+        is_logged = (await m.from_user.id).is_logged
         if is_logged:
             return await m.reply_text(f"__You are already loggedin {VICTORY_HAND}.__", quote=True)
 
@@ -163,7 +163,7 @@ async def about(bot, update):
             return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
 
     if Var.BOT_PASSWORD:
-        is_logged = (await b(m.from_user.id)).is_logged
+        is_logged = (await m.from_user.id).is_logged
         if not is_logged and m.from_user.id not in Var.AUTH_USERS:
             return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)
     if Var.UPDATES_CHANNEL:
@@ -185,7 +185,7 @@ async def help(bot, update):
             return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
 
     if Var.BOT_PASSWORD:
-        is_logged = (await b(m.from_user.id)).is_logged
+        is_logged = (await m.from_user.id).is_logged
         if not is_logged and m.from_user.id not in Var.AUTH_USERS:
             return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)
     if Var.UPDATES_CHANNEL:
