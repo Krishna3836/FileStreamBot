@@ -83,12 +83,12 @@ async def start(b, m):
             caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
             reply_markup=START_BUTTONS)
-    #await m.reply_text(
-            #text=TEXT,
-            #parse_mode="HTML",
-            #disable_web_page_preview=True,
-            #reply_markup=buttonz
-           #)        
+    await m.reply_text(
+            text=TEXT,
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+            reply_markup=buttonz
+           )        
         
 
 @StreamBot.on_callback_query()
