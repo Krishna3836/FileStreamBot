@@ -70,10 +70,19 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
 )        
-
-    
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):
+    """Processing Your Request"""
+
+    if Var.BANNED_USERS:
+        if m.from_user.id in Var.BANNED_USERS:
+            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
+
+    if Var.BOT_PASSWORD:
+        is_logged = (await get_data(m.from_user.id)).is_logged
+        if not is_logged and m.from_user.id not in Var.AUTH_USERS:
+            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)    
+
     if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(b, m)
       if fsub == 400:
@@ -114,19 +123,8 @@ async def cb_data(bot, update):
     else:
         await update.message.delete()
 
-@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
-async def help(bot, update):
-    await add_user_to_database(bot, update)
-    if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, update)
-      if fsub == 400:
-        return
-    await update.reply_text(
-        text=HELP_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=HELP_BUTTONS
-    )
-  .
+
+ 
 ################## login command ##################
 
 @Streambot.on_message(filters.command('login') & filters.incoming & filters.private)
