@@ -10,7 +10,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 from Code_X_Mania.forcesub import handle_force_subscribe
-from pyrogram.emoji import *
+
 from pyrogram.types import ReplyKeyboardMarkup
 
 
@@ -71,18 +71,7 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
         ]]
 )        
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
-async def start(b, m):
-    """Processing Your Request"""
-
-    if Var.BANNED_USERS:
-        if m.from_user.id in Var.BANNED_USERS:
-            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
-
-    if Var.BOT_PASSWORD:
-        is_logged = (m.from_user.id).is_logged
-        if not is_logged and m.from_user.id not in Var.AUTH_USERS:
-            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)    
-
+async def start(b, m):    
     if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(b, m)
       if fsub == 400:
@@ -125,47 +114,13 @@ async def cb_data(bot, update):
 
 
  
-################## login command ##################
-
-@StreamBot.on_message(filters.command('login') & filters.incoming & filters.private)
-async def password(c, m):
-    if Var.BOT_PASSWORD:
-        if m.from_user.id in Var.AUTH_USERS:
-            return await m.reply_text(f"__Hey you are auth user of this bot so you don't want to login {DETECTIVE_LIGHT_SKIN_TONE}.__")
-
-        is_logged = (await m.from_user.id).is_logged
-        if is_logged:
-            return await m.reply_text(f"__You are already loggedin {VICTORY_HAND}.__", quote=True)
-
-        if len(m.command) == 1:
-            await m.reply_text('Send me the bot password in the format `/login password`')
-        else:
-            cmd, pwd = m.text.split(' ', 1)
-            if pwd == Var.BOT_PASSWORD:
-                await update_login(m.from_user.id, True)
-                await m.reply_text(text=LOCKED_WITH_KEY, quote=True)
-                await m.reply_text(f'Logged Sucessfully to the bot.\nEnjoy the bot now {FACE_SAVORING_FOOD}.', quote=True)
-            else:
-                await m.reply_sticker(sticker="CAACAgQAAxkBAAIlHWC8WTwz55v_w0laDRuSrwL2oWRTAALtDAACYLUpUtRT8sziJp59HwQ", quote=True)
-                return await m.reply_text(f'Incorrect password', quote=True)
-    else:
-        await m.reply_text(f'**This bot was publicly available to all {SMILING_FACE_WITH_HEARTS}.**\nIf you are the owner of the bot to make bot private add bot password in Config Vars {LOCKED_WITH_KEY}.', quote=True)
+ #Recoded By Tellybots
 
 
 
 @StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
 async def about(bot, update):
     await add_user_to_database(bot, update)
-    """Processing Your Request"""
-
-    if Var.BANNED_USERS:
-        if m.from_user.id in Var.BANNED_USERS:
-            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
-
-    if Var.BOT_PASSWORD:
-        is_logged = (m.from_user.id).is_logged
-        if not is_logged and m.from_user.id not in Var.AUTH_USERS:
-            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)
     if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, update)
       if fsub == 400:
@@ -178,16 +133,6 @@ async def about(bot, update):
 @StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
 async def help(bot, update):
     await add_user_to_database(bot, update)
-    """Processing Your Request"""
-
-    if Var.BANNED_USERS:
-        if m.from_user.id in Var.BANNED_USERS:
-            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
-
-    if Var.BOT_PASSWORD:
-        is_logged = (m.from_user.id).is_logged
-        if not is_logged and m.from_user.id not in Var.AUTH_USERS:
-            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)
     if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(bot, update)
       if fsub == 400:
