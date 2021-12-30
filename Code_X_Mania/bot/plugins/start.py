@@ -175,3 +175,7 @@ async def about(bot, update):
         disable_web_page_preview=True,
         reply_markup=ABOUT_BUTTONS
     ) 
+@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
+async def help(bot, update):
+    await add_user_to_database(bot, update)
+.....
