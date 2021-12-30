@@ -38,3 +38,9 @@ class Var(object):
     MONGODB_URI = os.environ.get("MONGODB_URI", "")
     BIN_CHANNEL = int(os.environ.get("BIN_CHANNEL", "-100"))
     BROADCAST_AS_COPY = bool(os.environ.get("BROADCAST_AS_COPY", "False"))
+    AUTH_USERS = list(int(i) for i in os.environ.get("AUTH_USERS", "").split(" ")) if os.environ.get("AUTH_USERS", "") else []
+    if OWNER_ID not in AUTH_USERS:
+        AUTH_USERS.append(OWNER_ID)
+    BANNED_USERS = [int(i) for i in os.environ.get("BANNED_USERS", "").split(" ")] if os.environ.get("BANNED_USERS", "") else None
+    
+    BOT_PASSWORD = os.environ.get("BOT_PASSWORD", "") if os.environ.get("BOT_PASSWORD", "") else None
