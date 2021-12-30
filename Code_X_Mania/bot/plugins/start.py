@@ -90,6 +90,7 @@ async def start(b, m):
             #reply_markup=buttonz
            #)        
         get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
+
         file_size = None
         if get_msg.video:
             file_size = f"{humanbytes(get_msg.video.file_size)}"
@@ -125,7 +126,6 @@ async def start(b, m):
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎥 Watch Online", url=stream_link), #Stream Link
                                                 InlineKeyboardButton('📩 Download Link', url=online_link)]]) #Download Link
         )
-
 @StreamBot.on_callback_query()
 async def cb_data(bot, update):
     if update.data == "home":
