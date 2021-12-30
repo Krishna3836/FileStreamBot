@@ -126,18 +126,7 @@ async def help(bot, update):
         disable_web_page_preview=True,
         reply_markup=HELP_BUTTONS
     )
-@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
-async def about(bot, update):
-    await add_user_to_database(bot, update)
-    if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, update)
-      if fsub == 400:
-        return
-    await update.reply_text(
-        text=ABOUT_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS
-    )
+  .
 ################## login command ##################
 
 @Streambot.on_message(filters.command('login') & filters.incoming & filters.private)
@@ -163,3 +152,15 @@ async def password(c, m):
                 return await m.reply_text(f'Incorrect password', quote=True)
     else:
         await m.reply_text(f'**This bot was publicly available to all {SMILING_FACE_WITH_HEARTS}.**\nIf you are the owner of the bot to make bot private add bot password in Config Vars {LOCKED_WITH_KEY}.', quote=True)
+@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
+async def about(bot, update):
+    await add_user_to_database(bot, update)
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, update)
+      if fsub == 400:
+        return
+    await update.reply_text(
+        text=ABOUT_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=ABOUT_BUTTONS
+    ) 
