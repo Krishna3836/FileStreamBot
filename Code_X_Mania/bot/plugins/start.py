@@ -10,7 +10,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 from Code_X_Mania.forcesub import handle_force_subscribe
-
+from pyrogram.emoji import *
 from pyrogram.types import ReplyKeyboardMarkup
 
 
