@@ -90,43 +90,7 @@ async def start(b, m):
             #reply_markup=buttonz
            #)        
         
-        get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
 
-        file_size = None
-        if get_msg.video:
-            file_size = f"{humanbytes(get_msg.video.file_size)}"
-        elif get_msg.document:
-            file_size = f"{humanbytes(get_msg.document.file_size)}"
-        elif get_msg.audio:
-            file_size = f"{humanbytes(get_msg.audio.file_size)}"
-            
-        elif get_msg.photo:
-            file_size=f"{get_msg.photo.file_size}"
-
-        file_name = None
-        if get_msg.video:
-            file_name = f"{get_msg.video.file_name}"
-        elif get_msg.document:
-            file_name = f"{get_msg.document.file_name}"
-        elif get_msg.audio:
-            file_name = f"{get_msg.audio.file_name}"
-        elif get_msg.photo:
-            file_name=f"{get_msg.photo.file_name}"
-
-        stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
-        
-        online_link = Var.URL + 'download/' + str(log_msg.message_id) 
-       
-
-        msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n📥 Download Link : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
-
-
-        await m.reply_text(
-            text=msg_text.format(file_name, file_size, online_link, stream_link),
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎥 Watch Online", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('📩 Download Link', url=online_link)]]) #Download Link
-        )
 @StreamBot.on_callback_query()
 async def cb_data(bot, update):
     if update.data == "home":
@@ -149,12 +113,8 @@ async def cb_data(bot, update):
         )
     else:
         await update.message.delete()
-
-
  
  #Recoded By Tellybots
-
-
 
 @StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
 async def about(bot, update):
