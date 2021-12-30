@@ -1,5 +1,5 @@
-# (c) Jigarvarma2005 || Code-X-Mania
-#edit at your own risk
+# (c) Jigarvarma2005 || Code-X-Mania || Tellybots
+
 import os
 import asyncio
 from asyncio import TimeoutError
@@ -17,16 +17,6 @@ from Code_X_Mania.add import add_user_to_database
 @StreamBot.on_message((filters.private) & (filters.document | filters.video | filters.audio | filters.photo) & ~filters.edited, group=4)
 async def private_receive_handler(c: Client, m: Message):
     await add_user_to_database(c, m)
-    """Processing Your Request"""
-
-    if Var.BANNED_USERS:
-        if m.from_user.id in Var.BANNED_USERS:
-            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
-
-    if Var.BOT_PASSWORD:
-        is_logged = (m.from_user.id).is_logged
-        if not is_logged and m.from_user.id not in Var.AUTH_USERS:
-            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)    
     if Var.UPDATES_CHANNEL:
       fsub = await handle_force_subscribe(c, m)
       if fsub == 400:
