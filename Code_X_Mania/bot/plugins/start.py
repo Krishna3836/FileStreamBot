@@ -164,3 +164,13 @@ async def about(bot, update):
         disable_web_page_preview=True,
         reply_markup=ABOUT_BUTTONS
     ) 
+    """Checking and Processing the renaming"""
+
+    if Config.BANNED_USERS:
+        if m.from_user.id in Config.BANNED_USERS:
+            return await m.reply_text(TEXT.BANNED_USER_TEXT, quote=True)
+
+    if Config.BOT_PASSWORD:
+        is_logged = (await get_data(m.from_user.id)).is_logged
+        if not is_logged and m.from_user.id not in Config.AUTH_USERS:
+            return await m.reply_text(TEXT.NOT_LOGGED_TEXT, quote=True)
