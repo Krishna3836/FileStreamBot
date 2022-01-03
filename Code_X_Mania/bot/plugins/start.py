@@ -114,16 +114,7 @@ async def start(b, m):
         
        
 
-        msg_text ="""
-
-<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>
-
-<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>
-
-<b> 🖥WATCH  :</b> <i>{}</i>
-
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
-"""
+        msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
 
         await m.reply_text(
             text=msg_text.format(file_name, file_size, online_link, stream_link),
