@@ -150,10 +150,6 @@ async def start(b, m):
 
 <b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
 """
-        await m.reply_text(
-            text=msg_text.format(file_name, file_size, online_link, stream_link),
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🖥STREAM", url=stream_link)]]) #Download Link
-        )
+
 
 
