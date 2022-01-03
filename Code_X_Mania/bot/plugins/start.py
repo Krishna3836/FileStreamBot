@@ -27,7 +27,7 @@ START_TEXT = """
 <b>Hey </b> <b>{}</b>\n
 <b>I am Telegram File Direct Link Generator as well as File Streamer Bot. </b>\n
 <b>✪ Use Help Command to Know how to Use me.</b>\n
-<b><b>✪ Made With 💕 By </b>@Tellybots_4u</b>"""
+<b><b>✪ Made With 💕 By </b>@DKBOTZ</b>"""
 
 HELP_TEXT = """
 <b>✪ Send Me Any File or Media .</b>\n
@@ -37,12 +37,11 @@ HELP_TEXT = """
 """
 
 ABOUT_TEXT = """
-<b>🤖 My Name : Telly File Stream Bot</b>\n
-<b>🚦 Version : <a href='https://telegram.me/tellybots_4u'>2.0</a></b>\n
-<b>💫 Source Code : <a href='https://t.me/tellybots_digital'>Click Here</a></b>\n
+<b>🤖 My Name : DK LINK BOT</b>\n
+<b>🚦 Version : <a href='https://telegram.me/DKBOTZ'>2.0</a></b>\n
 <b>🗃️ Library : <a href='https://pyrogram.org'>Click Here</a></b>\n
-<b>👲 Developer : <a href='https://telegram.me/tellybots_4u'>TellyBots_4u</a></b>\n
-<b>📦 Last Updated : <a href='https://telegram.me/tellybots_4u'>[ 15-Oct-21 ] 10:00 PM</a></b>"""
+<b>👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>TellyBots_4u</a></b>\n
+<b>📦 Last Updated : <a href='https://telegram.me/DKBOTZHEP'>[ 15-Jan-22 ] 10:00 PM</a></b>"""
 
 TEXT = """Use Below Button Or Command to Use Me"""
 
@@ -79,7 +78,7 @@ async def start(b, m):
     await add_user_to_database(b, m)
     await StreamBot.send_photo(
             chat_id=m.chat.id,
-            photo ="https://telegra.ph/file/0f0d8a7370ff48b48d664.jpg",
+            photo ="",
             caption = START_TEXT.format(m.from_user.mention),
             parse_mode="html",
             reply_markup=START_BUTTONS)
