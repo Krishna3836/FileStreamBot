@@ -48,8 +48,8 @@ TEXT = """Use Below Button Or Command to Use Me"""
              
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/tellybots_4u'),
-        InlineKeyboardButton('💬 Support Group', url='https://telegram.me/tellybots_support')
+        InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/DKBOTZ'),
+        InlineKeyboardButton('💬 Support Group', url='https://telegram.me/DK_BOTZ')
         ],[
         InlineKeyboardButton('❔ Help', callback_data='help'),
         InlineKeyboardButton('⛔ Close', callback_data='close')
