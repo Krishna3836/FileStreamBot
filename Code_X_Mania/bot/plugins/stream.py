@@ -56,7 +56,7 @@ async def private_receive_handler(c: Client, m: Message):
 
         await log_msg.reply_text(text=f"**Requested By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
-            text=msg_text.format(file_name, file_size, online_link, stream_link),
+            text=msg_text.format(file_name, file_size, stream_link),
             parse_mode="HTML", 
             quote=True,
             disable_web_page_preview=True,
@@ -74,8 +74,7 @@ async def channel_receive_handler(bot, broadcast):
         return
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
-        online_link = Var.URL + 'download/' + str(log_msg.message_id) 
+        stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
         await log_msg.reply_text(
             text=f"**Channel Name:** `{broadcast.chat.title}`\n**Cʜᴀɴɴᴇʟ ID:** `{broadcast.chat.id}`\n**Rᴇǫᴜᴇsᴛ ᴜʀʟ:** {stream_link}",
             quote=True,
