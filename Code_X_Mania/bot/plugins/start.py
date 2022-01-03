@@ -91,6 +91,8 @@ async def cb_data(bot, update):
         )
     else:
         await update.message.delete()       
+
+
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):    
     if Var.UPDATES_CHANNEL:
@@ -155,5 +157,3 @@ async def start(b, m):
         )
 
  #Recoded By Thekk     
-
-
