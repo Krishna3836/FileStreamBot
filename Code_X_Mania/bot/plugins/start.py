@@ -148,8 +148,4 @@ async def start(b, m):
 
 <b> 🖥WATCH  :</b> <i>{}</i>
 
-<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
-"""
-
-
-
+<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>"""
