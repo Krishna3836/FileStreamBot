@@ -113,25 +113,27 @@ async def start(b, m):
     try:        
 
         file_size = None
-        if get_msg.video:
-            file_size = f"{humanbytes(get_msg.video.file_size)}"
-        elif get_msg.document:
-            file_size = f"{humanbytes(get_msg.document.file_size)}"
-        elif get_msg.audio:
-            file_size = f"{humanbytes(get_msg.audio.file_size)}"
-            
-        elif get_msg.photo:
-            file_size=f"{get_msg.photo.file_size}"
+        if m.video:
+            file_size = f"{humanbytes(m.video.file_size)}"
+        elif m.document:
+            file_size = f"{humanbytes(m.document.file_size)}"
+        elif m.audio:
+            file_size = f"{humanbytes(m.audio.file_size)}"
+        elif m.photo:
+            file_size=f"{humanbytes(m.photo.file_size)}"
 
         file_name = None
-        if get_msg.video:
-            file_name = f"{get_msg.video.file_name}"
-        elif get_msg.document:
-            file_name = f"{get_msg.document.file_name}"
-        elif get_msg.audio:
-            file_name = f"{get_msg.audio.file_name}"
-        elif get_msg.photo:
-            file_name=f"{get_msg.photo.file_name}"
+        if m.video:
+            file_name = f"{m.video.file_name}"
+        elif m.document:
+            file_name = f"{m.document.file_name}"
+        elif m.audio:
+            file_name = f"{m.audio.file_name}"
+        """
+        elif m.photo:
+            file_name=f"{m.photo.file_name}"
+        """
+
 
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
         
