@@ -36,11 +36,11 @@ HELP_TEXT = """
 """
 
 ABOUT_TEXT = """
-<b>🤖 My Name : DK LINK BOT</b>\n
-<b>🚦 Version : <a href='https://telegram.me/DKBOTZ'>2.0</a></b>\n
-<b>🗃️ Library : <a href='https://pyrogram.org'>Click Here</a></b>\n
-<b>👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>TellyBots_4u</a></b>\n
-<b>📦 Last Updated : <a href='https://telegram.me/DKBOTZHEP'>[ 15-Jan-22 ] 10:00 PM</a></b>"""
+🤖 My Name : DK LINK BOT\n
+🚦 Version : <a href='https://telegram.me/DKBOTZ'>2.0</a>\n
+🗃️ Library : <a href='https://pyrogram.org'>Click Here</a>\n
+👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>TellyBots_4u</a>\n
+📦 Last Updated : <a href='https://telegram.me/DKBOTZHEP'>[ 15-Jan-22 ] 10:00 PM</a>"""
 
 TEXT = """Use Below Button Or Command to Use Me"""
 
