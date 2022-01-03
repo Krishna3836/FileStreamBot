@@ -88,9 +88,6 @@ async def start(b, m):
     
 
 
-        get_msg = await b.get_messages(chat_id=Var.BIN_CHANNEL, message_ids=int(usr_cmd))
-
-        file_size = None
         if get_msg.video:
             file_size = f"{humanbytes(get_msg.video.file_size)}"
         elif get_msg.document:
