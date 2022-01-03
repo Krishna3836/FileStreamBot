@@ -24,16 +24,15 @@ buttonz=ReplyKeyboardMarkup(
         )
 
 START_TEXT = """
-<b>Hey </b> <b>{}</b>\n
-<b>I am Telegram File Direct Link Generator as well as File Streamer Bot. </b>\n
-<b>✪ Use Help Command to Know how to Use me.</b>\n
-<b><b>✪ Made With 💕 By </b>@DKBOTZ</b>"""
+✮ Hey {} ✮\n
+`I am Telegram File To Link Bot`\n
+`Use Help Command to Know how to Use me`\n
+✮ Made With 💕 By @DKBOTZ ✮"""
 
 HELP_TEXT = """
-<b>✪ Send Me Any File or Media .</b>\n
-<b>✪ I Will Provide You Instant Direct Download link and Online Streaming link.</b>\n
-<b>✪ Add me in Your Channel as Admin To Get Direct Download link button and online Stream Link Button </b>\n
-<b>✪ Streaming Link as well as Instant Link Generator With Fastest Speed</b>\n
+✮ Send Me Any File or Media\n
+✮ Provide You Instant Direct Download link\n
+✮ Add me in Your Channel as Admin To Get Direct Download link button and online Stream Link Button\n
 """
 
 ABOUT_TEXT = """
@@ -48,25 +47,25 @@ TEXT = """Use Below Button Or Command to Use Me"""
              
 START_BUTTONS = InlineKeyboardMarkup(
         [[
-        InlineKeyboardButton('🤖 Update Channel', url='https://telegram.me/DKBOTZ'),
+        InlineKeyboardButton('♻️ Update Channel', url='https://telegram.me/DKBOTZ'),
         InlineKeyboardButton('💬 Support Group', url='https://telegram.me/DK_BOTZ')
         ],[
-        InlineKeyboardButton('❔ Help', callback_data='help'),
-        InlineKeyboardButton('⛔ Close', callback_data='close')
+        InlineKeyboardButton('♨️ Help', callback_data='help'),
+        InlineKeyboardButton('🗑️ Close', callback_data='close')
         ]]
 )
 HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏡 Home', callback_data='home'),
         InlineKeyboardButton('👲 About', callback_data='about'),
-        InlineKeyboardButton('⛔ Close', callback_data='close')
+        InlineKeyboardButton('🗑️ Close', callback_data='close')
         ]]
 )
 ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('🏡 Home', callback_data='home'),
-        InlineKeyboardButton('❔ Help', callback_data='help'),
-        InlineKeyboardButton('⛔ Close', callback_data='close')
+        InlineKeyboardButton('♨️ Help', callback_data='help'),
+        InlineKeyboardButton('🗑️ Close', callback_data='close')
         ]]
 )        
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
