@@ -110,46 +110,8 @@ async def start(b, m):
 
     
 
-    try:        
-
-        file_size = None
-        if m.video:
-            file_size = f"{humanbytes(m.video.file_size)}"
-        elif m.document:
-            file_size = f"{humanbytes(m.document.file_size)}"
-        elif m.audio:
-            file_size = f"{humanbytes(m.audio.file_size)}"
-        elif m.photo:
-            file_size=f"{humanbytes(m.photo.file_size)}"
-
-        file_name = None
-        if m.video:
-            file_name = f"{m.video.file_name}"
-        elif m.document:
-            file_name = f"{m.document.file_name}"
-        elif m.audio:
-            file_name = f"{m.audio.file_name}"
-        """
-        elif m.photo:
-            file_name=f"{m.photo.file_name}"
-        """
-
-        log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
-        stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
+    
         
-       
-
-        msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
 
 
-        await m.reply_text(
-            text=msg_text.format(file_name, file_size, stream_link),
-            parse_mode="HTML", 
-            quote=True,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎥 Watch Online", url=stream_link)]]) #STREAM Link
-        )
-    except FloodWait as e:
-        print(f"Sleeping for {str(e.x)}s")
-        await asyncio.sleep(e.x)
 
