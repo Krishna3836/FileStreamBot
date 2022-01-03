@@ -134,7 +134,7 @@ async def start(b, m):
             file_name=f"{m.photo.file_name}"
         """
 
-
+        log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
         
        
