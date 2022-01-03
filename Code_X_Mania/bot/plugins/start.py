@@ -116,5 +116,30 @@ async def start(b, m):
     
         
 
+ #Recoded By Tellybots
 
+@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
+async def about(bot, update):
+    await add_user_to_database(bot, update)
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, update)
+      if fsub == 400:
+        return
+    await update.reply_text(
+        text=ABOUT_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=ABOUT_BUTTONS
+    ) 
+@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
+async def help(bot, update):
+    await add_user_to_database(bot, update)
+    if Var.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, update)
+      if fsub == 400:
+        return
+    await update.reply_text(
+        text=HELP_TEXT,
+        disable_web_page_preview=True,
+        reply_markup=HELP_BUTTONS
+    )
 
