@@ -111,7 +111,6 @@ async def start(b, m):
 
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
         
-        online_link = Var.URL + 'download/' + str(log_msg.message_id) 
        
 
         msg_text ="""
@@ -126,7 +125,6 @@ async def start(b, m):
 
 <b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>
 """
-
         await m.reply_text(
             text=msg_text.format(file_name, file_size, online_link, stream_link),
             parse_mode="HTML",
