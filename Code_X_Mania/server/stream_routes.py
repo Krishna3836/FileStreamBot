@@ -35,15 +35,6 @@ async def stream_handler(request):
         logging.error(e)
         raise web.HTTPNotFound
         
-@routes.get("/download/{message_id}")
-@routes.get("/{message_id}")
-async def old_stream_handler(request):
-    try:
-        message_id = int(request.match_info['message_id'])
-        return await media_streamer(request, message_id)
-    except ValueError as e:
-        logging.error(e)
-        raise web.HTTPNotFound
         
 
 async def media_streamer(request, message_id: int):
