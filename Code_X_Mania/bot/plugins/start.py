@@ -40,7 +40,7 @@ ABOUT_TEXT = """
 🚦 Version : <a href='https://telegram.me/DKBOTZ'>2.0</a>\n
 🗃️ Library : <a href='https://pyrogram.org'>Click Here</a>\n
 👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>DKBOTZ</a>\n
-📦 Last Updated : <a href='https://telegram.me/DKBOTZHEP'>[ 15-Jan-22 ] 10:00 PM</a>"""
+📦 Last Updated : <a href='https://telegram.me/DKBOTZHELP'>[ 15-Jan-22 ] 10:00 PM</a>"""
 
 TEXT = """Use Below Button To Know More About Me\nJust Send me File To Get Started"""
 
