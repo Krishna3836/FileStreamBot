@@ -47,12 +47,12 @@ async def private_receive_handler(c: Client, m: Message):
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
         stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
         
-        online_link = Var.URL + 'download/'+ str(log_msg.message_id) 
+         
        
         
         
  
-        msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n📥 Download Link : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
+        msg_text = "Your Link Generated 📩\n\n🗄️ File Name : <code>{}</code>\n\n📇 File Size : <code>{}</code>\n\n🎥 Watch Online : <code>{}</code>"
 
         await log_msg.reply_text(text=f"**Requested By :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
@@ -87,8 +87,7 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🎥 Watch Online", url=stream_link),
-                     InlineKeyboardButton('📩 Download Link', url=online_link)] 
+                    [InlineKeyboardButton("🎥 Watch Online", url=stream_link)] 
                 ]
             )
         )
