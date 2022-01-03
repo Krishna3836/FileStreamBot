@@ -25,8 +25,8 @@ buttonz=ReplyKeyboardMarkup(
 
 START_TEXT = """
 ✮ Hey {} ✮\n
-`I am Telegram File To Link Bot`\n
-`Use Help Command to Know how to Use me`\n
+<code>I am Telegram File To Link Bot</code>\n
+<code>Use Help Command to Know how to Use me</code>\n
 ✮ Made With 💕 By @DKBOTZ ✮"""
 
 HELP_TEXT = """
