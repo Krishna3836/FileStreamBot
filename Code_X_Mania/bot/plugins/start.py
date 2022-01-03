@@ -39,10 +39,10 @@ ABOUT_TEXT = """
 🤖 My Name : DK LINK BOT\n
 🚦 Version : <a href='https://telegram.me/DKBOTZ'>2.0</a>\n
 🗃️ Library : <a href='https://pyrogram.org'>Click Here</a>\n
-👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>TellyBots_4u</a>\n
+👲 Developer : <a href='https://telegram.me/DKBOTZHELP'>DKBOTZ</a>\n
 📦 Last Updated : <a href='https://telegram.me/DKBOTZHEP'>[ 15-Jan-22 ] 10:00 PM</a>"""
 
-TEXT = """Use Below Button Or Command to Use Me"""
+TEXT = """Use Below Button To Know More About Me\nJust Send me File To Get Started"""
 
              
 START_BUTTONS = InlineKeyboardMarkup(
