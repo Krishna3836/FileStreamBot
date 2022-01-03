@@ -135,7 +135,7 @@ async def start(b, m):
         """
 
 
-        stream_link = Var.URL + 'watch/' + str(log_msg.message_id) 
+        stream_link = Var.URL + 'watch/' + str(log_msg.message_id)
         
        
 
