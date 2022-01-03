@@ -67,7 +67,30 @@ ABOUT_BUTTONS = InlineKeyboardMarkup(
         InlineKeyboardButton('♨️ Help', callback_data='help'),
         InlineKeyboardButton('🗑️ Close', callback_data='close')
         ]]
-)        
+    )
+
+@StreamBot.on_callback_query()
+async def cb_data(bot, update):
+    if update.data == "home":
+        await update.message.edit_text(
+            text=START_TEXT.format(update.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=START_BUTTONS
+        )
+    elif update.data == "help":
+        await update.message.edit_text(
+            text=HELP_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=HELP_BUTTONS
+        )
+    elif update.data == "about":
+        await update.message.edit_text(
+            text=ABOUT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=ABOUT_BUTTONS
+        )
+    else:
+        await update.message.delete()       
 @StreamBot.on_message((filters.command("start") | filters.regex('start')) & filters.private & ~filters.edited)
 async def start(b, m):    
     if Var.UPDATES_CHANNEL:
@@ -133,52 +156,4 @@ async def start(b, m):
 
  #Recoded By Thekk     
 
-@StreamBot.on_callback_query()
-async def cb_data(bot, update):
-    if update.data == "home":
-        await update.message.edit_text(
-            text=START_TEXT.format(update.from_user.mention),
-            disable_web_page_preview=True,
-            reply_markup=START_BUTTONS
-        )
-    elif update.data == "help":
-        await update.message.edit_text(
-            text=HELP_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=HELP_BUTTONS
-        )
-    elif update.data == "about":
-        await update.message.edit_text(
-            text=ABOUT_TEXT,
-            disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS
-        )
-    else:
-        await update.message.delete()
- 
- #Recoded By Tellybots
 
-@StreamBot.on_message((filters.command("about") | filters.regex('about')) & filters.private & ~filters.edited)
-async def about(bot, update):
-    await add_user_to_database(bot, update)
-    if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, update)
-      if fsub == 400:
-        return
-    await update.reply_text(
-        text=ABOUT_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS
-    ) 
-@StreamBot.on_message((filters.command("help") | filters.regex('help')) & filters.private & ~filters.edited)
-async def help(bot, update):
-    await add_user_to_database(bot, update)
-    if Var.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, update)
-      if fsub == 400:
-        return
-    await update.reply_text(
-        text=HELP_TEXT,
-        disable_web_page_preview=True,
-        reply_markup=HELP_BUTTONS
-    )
